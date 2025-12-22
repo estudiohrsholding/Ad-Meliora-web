@@ -949,7 +949,7 @@
             const remainingFeatures = features.length - 3;
 
             return `
-                <div class="property-card group hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-200 bg-white hover:bg-[#FAFAD2] shadow-soft rounded-lg">
+                <div class="property-card group hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-200 bg-white hover:bg-[#FAFAD2] shadow-soft rounded-lg cursor-pointer" data-property-index="${index}">
                     <!-- Image Container -->
                     <div class="relative h-48 w-full overflow-hidden">
                         <div class="relative h-full w-full bg-gradient-to-br from-[#F5F5DC] to-[#FAFAD2] overflow-hidden">
@@ -1137,11 +1137,27 @@
             }
         }
         
-        // Función para añadir event listeners a los botones "Get Details"
+        // Función para añadir event listeners a las tarjetas de propiedades
         function attachPropertyDetailsListeners() {
+            const propertyCards = document.querySelectorAll('.property-card');
+            propertyCards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    // Prevenir que se abra el modal si se hace clic en los botones
+                    if (e.target.closest('button') || e.target.closest('a')) {
+                        return;
+                    }
+                    const propertyIndex = parseInt(this.getAttribute('data-property-index'));
+                    if (propertiesData[propertyIndex]) {
+                        openPropertyModal(propertiesData[propertyIndex]);
+                    }
+                });
+            });
+            
+            // Mantener funcionalidad del botón "Get Details" (por si acaso)
             const detailButtons = document.querySelectorAll('.property-details-btn');
             detailButtons.forEach(button => {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation(); // Prevenir que se propague al contenedor
                     const propertyIndex = parseInt(this.getAttribute('data-property-index'));
                     if (propertiesData[propertyIndex]) {
                         openPropertyModal(propertiesData[propertyIndex]);
