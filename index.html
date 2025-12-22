@@ -970,13 +970,13 @@
                             </div>
                         </div>
                         <!-- Type Badge -->
-                        <div class="absolute top-4 left-4 z-40">
+                        <div class="absolute top-4 left-4 z-40 pointer-events-none">
                             <span class="${getTypeColor(property.categoria)} text-white border-0 px-3 py-1 text-sm font-semibold shadow-lg rounded-md">
                                 ${getTypeLabel(property.categoria)}
                             </span>
                         </div>
                         <!-- Price Badge -->
-                        <div class="absolute bottom-4 right-4 z-40">
+                        <div class="absolute bottom-4 right-4 z-40 pointer-events-none">
                             <div class="bg-gradient-to-r from-[#B8860B] to-[#FFD700] backdrop-blur-sm rounded-lg px-4 py-2 shadow-xl border border-[#B8860B]/30">
                                 <div class="text-lg font-bold text-white whitespace-nowrap">${formatPrice(property.precio)}</div>
                             </div>
@@ -1079,7 +1079,7 @@
                     ? 'http://localhost:8000'  // Desarrollo local
                     : 'https://api.baibussines.com'; // Producci n: backend API
                 
-                const response = await fetch(`${API_BASE_URL}/sites/ad-meliora/properties`);
+                const response = await fetch(`${API_BASE_URL}/sites/ad_meliora/properties`);
                 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -1139,31 +1139,51 @@
         
         // Función para añadir event listeners a las tarjetas de propiedades
         function attachPropertyDetailsListeners() {
-            const propertyCards = document.querySelectorAll('.property-card');
-            propertyCards.forEach(card => {
-                card.addEventListener('click', function(e) {
-                    // Prevenir que se abra el modal si se hace clic en los botones
-                    if (e.target.closest('button') || e.target.closest('a')) {
-                        return;
-                    }
-                    const propertyIndex = parseInt(this.getAttribute('data-property-index'));
-                    if (propertiesData[propertyIndex]) {
-                        openPropertyModal(propertiesData[propertyIndex]);
-                    }
-                });
-            });
+            // Usar delegación de eventos en el contenedor para mejor rendimiento
+            const propertiesGrid = document.getElementById('properties-grid');
+            if (!propertiesGrid) return;
             
-            // Mantener funcionalidad del botón "Get Details" (por si acaso)
-            const detailButtons = document.querySelectorAll('.property-details-btn');
-            detailButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.stopPropagation(); // Prevenir que se propague al contenedor
-                    const propertyIndex = parseInt(this.getAttribute('data-property-index'));
-                    if (propertiesData[propertyIndex]) {
+            // Remover listener anterior si existe
+            propertiesGrid.removeEventListener('click', handlePropertyCardClick);
+            
+            // Añadir nuevo listener
+            propertiesGrid.addEventListener('click', handlePropertyCardClick);
+        }
+        
+        // Función manejadora de clics en las tarjetas
+        function handlePropertyCardClick(e) {
+            // Buscar la tarjeta padre más cercana
+            const propertyCard = e.target.closest('.property-card');
+            if (!propertyCard) return;
+            
+            // Si se hace clic en un botón o enlace, manejar según el caso
+            const clickedButton = e.target.closest('button');
+            const clickedLink = e.target.closest('a');
+            
+            if (clickedButton) {
+                // Si es el botón "Get Details", abrir el modal
+                if (clickedButton.classList.contains('property-details-btn')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const propertyIndex = parseInt(clickedButton.getAttribute('data-property-index'));
+                    if (propertiesData[propertyIndex] !== undefined && propertiesData[propertyIndex] !== null) {
                         openPropertyModal(propertiesData[propertyIndex]);
                     }
-                });
-            });
+                }
+                // Para otros botones, no hacer nada (dejar que funcionen normalmente)
+                return;
+            }
+            
+            if (clickedLink) {
+                // Si es un enlace, dejar que funcione normalmente (navegar a #contact)
+                return;
+            }
+            
+            // Si se hace clic en cualquier otra parte de la tarjeta, abrir el modal
+            const propertyIndex = parseInt(propertyCard.getAttribute('data-property-index'));
+            if (propertyIndex !== null && !isNaN(propertyIndex) && propertiesData[propertyIndex] !== undefined && propertiesData[propertyIndex] !== null) {
+                openPropertyModal(propertiesData[propertyIndex]);
+            }
         }
 
         // ============================================
@@ -1687,7 +1707,7 @@
                              window.location.protocol === 'file:';
                 return isDev ? 'http://localhost:8000' : 'https://api.baibussines.com';
             })(),
-            CLIENT_ID: 'ad-meliora', // IMPORTANTE: Si al subir a producción no carga, verificar este ID en la DB de DigitalOcean y actualizar.
+            CLIENT_ID: 'ad_meliora', // IMPORTANTE: Si al subir a producción no carga, verificar este ID en la DB de DigitalOcean y actualizar.
             ENDPOINT: '/api/v1/chat/message'
         };
 
