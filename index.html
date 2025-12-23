@@ -11,6 +11,41 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     
+    <!-- Google Maps API - Configura tu API Key aquí -->
+    <script>
+        // ============================================
+        // CONFIGURACIÓN DE GOOGLE MAPS API KEY
+        // ============================================
+        // 
+        // IMPORTANTE: Reemplaza 'YOUR_GOOGLE_MAPS_API_KEY' con tu clave de API de Google Maps.
+        // 
+        // Para obtener una API Key:
+        // 1. Ve a https://console.cloud.google.com/
+        // 2. Crea un nuevo proyecto o selecciona uno existente
+        // 3. Habilita la "Maps JavaScript API"
+        // 4. Ve a "Credenciales" y crea una nueva API Key
+        // 5. (Recomendado) Restringe la key a tu dominio para mayor seguridad
+        //
+        const GOOGLE_MAPS_API_KEY = 'AIzaSyBAQExwcev4T6xB6pW5n2XEcu8eREjm58I';
+        
+        // Cargar la API de Google Maps dinámicamente
+        function loadGoogleMapsAPI() {
+            if (GOOGLE_MAPS_API_KEY === 'YOUR_GOOGLE_MAPS_API_KEY') {
+                console.warn('⚠️ Google Maps API Key no configurada. Por favor, edita index.html y reemplaza YOUR_GOOGLE_MAPS_API_KEY con tu clave de API.');
+                return;
+            }
+            
+            const script = document.createElement('script');
+            script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&callback=initMapsCallback&loading=async`;
+            script.async = true;
+            script.defer = true;
+            document.head.appendChild(script);
+        }
+        
+        // Cargar la API cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', loadGoogleMapsAPI);
+    </script>
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -509,6 +544,220 @@
         body.modal-open {
             overflow: hidden;
         }
+        
+        /* ============================================
+           GOOGLE MAPS STYLES
+           ============================================ */
+        
+        /* Mapa del listado de propiedades */
+        .properties-map-container {
+            width: 100%;
+            height: 500px;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border: 2px solid #E5E5E5;
+            transition: all 0.3s ease;
+        }
+        
+        .properties-map-container:hover {
+            box-shadow: 0 8px 30px rgba(184, 134, 11, 0.15);
+            border-color: #B8860B;
+        }
+        
+        #properties-map {
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Toggle button para vista de mapa */
+        .map-toggle-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+        
+        .map-toggle-btn.active {
+            background: linear-gradient(135deg, #B8860B 0%, #8B6508 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(184, 134, 11, 0.3);
+        }
+        
+        .map-toggle-btn:not(.active) {
+            background: white;
+            color: #666;
+            border-color: #E5E5E5;
+        }
+        
+        .map-toggle-btn:not(.active):hover {
+            border-color: #B8860B;
+            color: #B8860B;
+            background: #FAFAD2;
+        }
+        
+        /* Mapa en el modal de detalle */
+        .modal-map-section {
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background: #FAFAFA;
+            border-radius: 0.75rem;
+            border: 1px solid #E5E5E5;
+        }
+        
+        .modal-map-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1A1A1A;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .modal-map-container {
+            width: 100%;
+            height: 300px;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        #modal-property-map {
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Custom InfoWindow styling */
+        .gm-style-iw {
+            padding: 0 !important;
+        }
+        
+        .gm-style-iw-d {
+            overflow: hidden !important;
+            padding: 0 !important;
+        }
+        
+        .map-info-window {
+            padding: 0.75rem;
+            max-width: 250px;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .map-info-window-image {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .map-info-window-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #1A1A1A;
+            margin-bottom: 0.25rem;
+            line-height: 1.3;
+        }
+        
+        .map-info-window-location {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .map-info-window-price {
+            font-weight: 700;
+            color: #B8860B;
+            font-size: 1.1rem;
+        }
+        
+        .map-info-window-btn {
+            display: block;
+            width: 100%;
+            margin-top: 0.75rem;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, #FFD700 0%, #B8860B 100%);
+            color: white;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+        
+        .map-info-window-btn:hover {
+            opacity: 0.9;
+        }
+        
+        /* Marker styles */
+        .custom-marker {
+            background: linear-gradient(135deg, #B8860B 0%, #8B6508 100%);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.5rem;
+            font-weight: 700;
+            font-size: 0.75rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            white-space: nowrap;
+        }
+        
+        /* Layout con mapa */
+        .properties-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .properties-layout.with-map {
+            flex-direction: column;
+        }
+        
+        @media (min-width: 1024px) {
+            .properties-layout.with-map {
+                flex-direction: row;
+            }
+            
+            .properties-layout.with-map .properties-grid-wrapper {
+                flex: 1;
+                max-width: 60%;
+            }
+            
+            .properties-layout.with-map .properties-map-wrapper {
+                flex: 1;
+                max-width: 40%;
+                position: sticky;
+                top: 80px;
+                height: fit-content;
+            }
+            
+            .properties-layout.with-map .properties-map-container {
+                height: calc(100vh - 120px);
+                min-height: 500px;
+            }
+        }
+        
+        @media (max-width: 1023px) {
+            .properties-map-container {
+                height: 350px;
+            }
+            
+            .modal-map-container {
+                height: 250px;
+            }
+        }
     </style>
 </head>
 <body class="bg-white text-gray-950 font-body antialiased">
@@ -674,9 +923,31 @@
                         <div class="text-sm text-gray-600">B.A.I. Support</div>
                     </div>
                     <div class="text-center">
-                        <div class="text-3xl font-bold text-gray-950 mb-2">5?</div>
+                        <div class="text-3xl font-bold text-gray-950 mb-2">5★</div>
                         <div class="text-sm text-gray-600">Expert Rating</div>
                     </div>
+                </div>
+                
+                <!-- View Toggle: Grid vs Map -->
+                <div class="flex justify-center gap-3 mb-8">
+                    <button id="view-grid-btn" class="map-toggle-btn active" onclick="togglePropertiesView('grid')">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+                        </svg>
+                        Grid View
+                    </button>
+                    <button id="view-map-btn" class="map-toggle-btn" onclick="togglePropertiesView('map')">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+                        </svg>
+                        Map View
+                    </button>
+                    <button id="view-split-btn" class="map-toggle-btn" onclick="togglePropertiesView('split')">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
+                        </svg>
+                        Split View
+                    </button>
                 </div>
             </div>
 
@@ -690,9 +961,45 @@
                 <h3 class="text-xl font-semibold text-gray-950 mb-2">Loading properties...</h3>
             </div>
 
-            <!-- Properties Grid -->
-            <div id="properties-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 hidden">
-                <!-- Properties will be inserted here by JavaScript -->
+            <!-- Properties Layout Container -->
+            <div id="properties-layout" class="properties-layout mb-16">
+                <!-- Properties Grid Wrapper -->
+                <div id="properties-grid-wrapper" class="properties-grid-wrapper">
+                    <div id="properties-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden">
+                        <!-- Properties will be inserted here by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Properties Map Wrapper (hidden by default) -->
+                <div id="properties-map-wrapper" class="properties-map-wrapper hidden">
+                    <div class="properties-map-container">
+                        <div id="properties-map">
+                            <!-- Map will be initialized here by JavaScript -->
+                            <div id="map-loading" class="flex items-center justify-center h-full bg-gradient-to-br from-[#FAFAD2] to-[#F5F5DC]">
+                                <div class="text-center">
+                                    <svg class="w-12 h-12 mx-auto text-[#B8860B] opacity-50 animate-pulse mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+                                    </svg>
+                                    <p class="text-[#B8860B] font-medium">Loading map...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Map Legend -->
+                    <div class="mt-4 flex items-center justify-center gap-6 text-sm text-gray-600">
+                        <div class="flex items-center gap-2">
+                            <div class="w-4 h-4 bg-gradient-to-r from-[#FFD700] to-[#B8860B] rounded-full shadow-sm"></div>
+                            <span>Property Location</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path>
+                            </svg>
+                            <span>Click marker for details</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Empty State -->
@@ -949,7 +1256,10 @@
             const remainingFeatures = features.length - 3;
 
             return `
-                <div class="property-card group hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-200 bg-white hover:bg-[#FAFAD2] shadow-soft rounded-lg cursor-pointer" data-property-index="${index}">
+                <div class="property-card group hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-200 bg-white hover:bg-[#FAFAD2] shadow-soft rounded-lg cursor-pointer" 
+                     data-property-index="${index}"
+                     onmouseenter="highlightMarker(${index})"
+                     onmouseleave="unhighlightMarker(${index})">
                     <!-- Image Container -->
                     <div class="relative h-48 w-full overflow-hidden">
                         <div class="relative h-full w-full bg-gradient-to-br from-[#F5F5DC] to-[#FAFAD2] overflow-hidden">
@@ -998,6 +1308,9 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                     </svg>
                                     <span class="text-sm font-medium">${property.ubicacion || 'Location not specified'}</span>
+                                    ${(property.latitude && property.longitude) ? `
+                                        <span class="ml-1 px-1.5 py-0.5 bg-green-100 text-green-700 text-xs rounded-full font-medium" title="Ver en mapa">📍GPS</span>
+                                    ` : ''}
                                 </div>
                             </div>
                             <div class="flex items-center text-[#B8860B]">
@@ -1117,6 +1430,11 @@
                     
                     // Mostrar el total de propiedades (del objeto paginado o el count del array)
                     propertiesCount.textContent = data.total || properties.length;
+                    
+                    // Inicializar el mapa si la API está lista
+                    if (isMapsApiReady() && currentMapView !== 'grid') {
+                        initPropertiesMap();
+                    }
                 }
 
             } catch (error) {
@@ -1308,6 +1626,9 @@
             // Actualizar carrusel
             updateCarousel();
             
+            // Inicializar mapa del modal con la ubicación de la propiedad
+            initModalMap(property);
+            
             // Mostrar modal
             modal.classList.remove('hidden');
             document.body.classList.add('modal-open');
@@ -1424,6 +1745,417 @@
 
         // Load properties on page load
         fetchProperties();
+
+        // ============================================
+        // GOOGLE MAPS FUNCTIONS
+        // ============================================
+        
+        // Estado global de los mapas
+        let propertiesMap = null;
+        let modalPropertyMap = null;
+        let mapMarkers = [];
+        let activeInfoWindow = null;
+        let currentMapView = 'grid'; // 'grid', 'map', 'split'
+        let mapsApiLoaded = false;
+        
+        // Callback cuando la API de Google Maps está lista
+        function initMapsCallback() {
+            console.log('Google Maps API loaded successfully');
+            mapsApiLoaded = true;
+            
+            // Si ya hay propiedades cargadas, inicializar el mapa
+            if (propertiesData && propertiesData.length > 0) {
+                initPropertiesMap();
+            }
+        }
+        
+        // Verificar si la API de Maps está disponible
+        function isMapsApiReady() {
+            return typeof google !== 'undefined' && typeof google.maps !== 'undefined';
+        }
+        
+        // Inicializar mapa principal de propiedades
+        function initPropertiesMap() {
+            if (!isMapsApiReady()) {
+                console.log('Google Maps API not ready yet');
+                return;
+            }
+            
+            const mapContainer = document.getElementById('properties-map');
+            const mapLoading = document.getElementById('map-loading');
+            
+            if (!mapContainer) return;
+            
+            // Calcular centro del mapa basado en propiedades con coordenadas
+            const propertiesWithCoords = propertiesData.filter(p => 
+                p.latitude && p.longitude && 
+                !isNaN(parseFloat(p.latitude)) && !isNaN(parseFloat(p.longitude))
+            );
+            
+            let centerLat = 38.3452; // Costa Blanca default
+            let centerLng = -0.4810;
+            
+            if (propertiesWithCoords.length > 0) {
+                centerLat = propertiesWithCoords.reduce((sum, p) => sum + parseFloat(p.latitude), 0) / propertiesWithCoords.length;
+                centerLng = propertiesWithCoords.reduce((sum, p) => sum + parseFloat(p.longitude), 0) / propertiesWithCoords.length;
+            }
+            
+            // Crear el mapa
+            propertiesMap = new google.maps.Map(mapContainer, {
+                center: { lat: centerLat, lng: centerLng },
+                zoom: 11,
+                styles: getMapStyles(),
+                mapTypeControl: true,
+                mapTypeControlOptions: {
+                    style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+                    position: google.maps.ControlPosition.TOP_RIGHT
+                },
+                fullscreenControl: true,
+                streetViewControl: false,
+                zoomControl: true,
+                zoomControlOptions: {
+                    position: google.maps.ControlPosition.RIGHT_CENTER
+                }
+            });
+            
+            // Ocultar loading
+            if (mapLoading) {
+                mapLoading.style.display = 'none';
+            }
+            
+            // Añadir marcadores
+            addPropertyMarkers();
+            
+            // Ajustar zoom para mostrar todos los marcadores
+            if (propertiesWithCoords.length > 1) {
+                fitMapToBounds();
+            }
+        }
+        
+        // Añadir marcadores al mapa
+        function addPropertyMarkers() {
+            if (!propertiesMap) return;
+            
+            // Limpiar marcadores anteriores
+            clearMapMarkers();
+            
+            propertiesData.forEach((property, index) => {
+                // Verificar que la propiedad tenga coordenadas válidas
+                if (!property.latitude || !property.longitude) return;
+                
+                const lat = parseFloat(property.latitude);
+                const lng = parseFloat(property.longitude);
+                
+                if (isNaN(lat) || isNaN(lng)) return;
+                
+                // Crear marcador personalizado
+                const marker = new google.maps.Marker({
+                    position: { lat, lng },
+                    map: propertiesMap,
+                    title: property.titulo || 'Property',
+                    icon: {
+                        path: google.maps.SymbolPath.CIRCLE,
+                        scale: 12,
+                        fillColor: '#B8860B',
+                        fillOpacity: 1,
+                        strokeColor: '#FFFFFF',
+                        strokeWeight: 3,
+                    },
+                    animation: google.maps.Animation.DROP
+                });
+                
+                // Crear InfoWindow con contenido personalizado
+                const infoWindow = new google.maps.InfoWindow({
+                    content: createInfoWindowContent(property, index),
+                    maxWidth: 280
+                });
+                
+                // Evento al hacer clic en el marcador
+                marker.addListener('click', () => {
+                    // Cerrar InfoWindow activo
+                    if (activeInfoWindow) {
+                        activeInfoWindow.close();
+                    }
+                    
+                    infoWindow.open(propertiesMap, marker);
+                    activeInfoWindow = infoWindow;
+                    
+                    // Animar el marcador
+                    marker.setAnimation(google.maps.Animation.BOUNCE);
+                    setTimeout(() => marker.setAnimation(null), 750);
+                });
+                
+                // Evento hover
+                marker.addListener('mouseover', () => {
+                    marker.setIcon({
+                        ...marker.getIcon(),
+                        scale: 15,
+                        fillColor: '#FFD700'
+                    });
+                });
+                
+                marker.addListener('mouseout', () => {
+                    marker.setIcon({
+                        ...marker.getIcon(),
+                        scale: 12,
+                        fillColor: '#B8860B'
+                    });
+                });
+                
+                mapMarkers.push({ marker, infoWindow, propertyIndex: index });
+            });
+        }
+        
+        // Crear contenido del InfoWindow
+        function createInfoWindowContent(property, index) {
+            const imagen = (property.fotos && property.fotos.length > 0) ? property.fotos[0] : null;
+            const precio = formatPrice(property.precio);
+            const isRental = property.categoria && (property.categoria.toUpperCase().includes('RENT') || property.categoria.toUpperCase().includes('ALQUILER'));
+            const formattedPrice = isRental && !precio.includes('/') ? `${precio}/mes` : precio;
+            
+            return `
+                <div class="map-info-window">
+                    ${imagen ? `<img src="${imagen}" alt="${property.titulo || 'Property'}" class="map-info-window-image" onerror="this.style.display='none'">` : ''}
+                    <div class="map-info-window-title">${property.titulo || 'Property'}</div>
+                    <div class="map-info-window-location">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#B8860B" stroke-width="2">
+                            <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                        </svg>
+                        ${property.ubicacion || 'Costa Blanca'}
+                    </div>
+                    <div class="map-info-window-price">${formattedPrice}</div>
+                    <div class="map-info-window-btn" onclick="openPropertyFromMap(${index})">
+                        Ver detalles
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Abrir propiedad desde el mapa
+        function openPropertyFromMap(index) {
+            if (propertiesData[index]) {
+                // Cerrar InfoWindow
+                if (activeInfoWindow) {
+                    activeInfoWindow.close();
+                    activeInfoWindow = null;
+                }
+                // Abrir modal
+                openPropertyModal(propertiesData[index]);
+            }
+        }
+        
+        // Limpiar marcadores del mapa
+        function clearMapMarkers() {
+            mapMarkers.forEach(({ marker, infoWindow }) => {
+                marker.setMap(null);
+                infoWindow.close();
+            });
+            mapMarkers = [];
+            activeInfoWindow = null;
+        }
+        
+        // Ajustar zoom para mostrar todos los marcadores
+        function fitMapToBounds() {
+            if (!propertiesMap || mapMarkers.length === 0) return;
+            
+            const bounds = new google.maps.LatLngBounds();
+            mapMarkers.forEach(({ marker }) => {
+                bounds.extend(marker.getPosition());
+            });
+            
+            propertiesMap.fitBounds(bounds);
+            
+            // Limitar zoom máximo
+            google.maps.event.addListenerOnce(propertiesMap, 'bounds_changed', () => {
+                if (propertiesMap.getZoom() > 15) {
+                    propertiesMap.setZoom(15);
+                }
+            });
+        }
+        
+        // Toggle entre vistas (grid, map, split)
+        function togglePropertiesView(view) {
+            currentMapView = view;
+            
+            const layout = document.getElementById('properties-layout');
+            const gridWrapper = document.getElementById('properties-grid-wrapper');
+            const mapWrapper = document.getElementById('properties-map-wrapper');
+            const gridBtn = document.getElementById('view-grid-btn');
+            const mapBtn = document.getElementById('view-map-btn');
+            const splitBtn = document.getElementById('view-split-btn');
+            const propertiesGrid = document.getElementById('properties-grid');
+            
+            // Actualizar botones
+            [gridBtn, mapBtn, splitBtn].forEach(btn => btn.classList.remove('active'));
+            
+            switch(view) {
+                case 'grid':
+                    gridBtn.classList.add('active');
+                    layout.classList.remove('with-map');
+                    gridWrapper.classList.remove('hidden');
+                    mapWrapper.classList.add('hidden');
+                    propertiesGrid.classList.remove('md:grid-cols-2', 'lg:grid-cols-2');
+                    propertiesGrid.classList.add('md:grid-cols-2', 'lg:grid-cols-3');
+                    break;
+                    
+                case 'map':
+                    mapBtn.classList.add('active');
+                    layout.classList.remove('with-map');
+                    gridWrapper.classList.add('hidden');
+                    mapWrapper.classList.remove('hidden');
+                    // Inicializar mapa si no existe
+                    if (!propertiesMap && isMapsApiReady()) {
+                        initPropertiesMap();
+                    } else if (propertiesMap) {
+                        // Trigger resize para que el mapa se renderice correctamente
+                        google.maps.event.trigger(propertiesMap, 'resize');
+                        fitMapToBounds();
+                    }
+                    break;
+                    
+                case 'split':
+                    splitBtn.classList.add('active');
+                    layout.classList.add('with-map');
+                    gridWrapper.classList.remove('hidden');
+                    mapWrapper.classList.remove('hidden');
+                    propertiesGrid.classList.remove('lg:grid-cols-3');
+                    propertiesGrid.classList.add('lg:grid-cols-2');
+                    // Inicializar mapa si no existe
+                    if (!propertiesMap && isMapsApiReady()) {
+                        setTimeout(initPropertiesMap, 100);
+                    } else if (propertiesMap) {
+                        setTimeout(() => {
+                            google.maps.event.trigger(propertiesMap, 'resize');
+                            fitMapToBounds();
+                        }, 100);
+                    }
+                    break;
+            }
+        }
+        
+        // Inicializar mapa del modal
+        function initModalMap(property) {
+            const mapSection = document.getElementById('modal-map-section');
+            const mapContainer = document.getElementById('modal-property-map');
+            const addressText = document.getElementById('modal-map-address-text');
+            
+            // Verificar si la propiedad tiene coordenadas válidas
+            if (!property.latitude || !property.longitude) {
+                mapSection.style.display = 'none';
+                return;
+            }
+            
+            const lat = parseFloat(property.latitude);
+            const lng = parseFloat(property.longitude);
+            
+            if (isNaN(lat) || isNaN(lng)) {
+                mapSection.style.display = 'none';
+                return;
+            }
+            
+            // Verificar si la API está lista
+            if (!isMapsApiReady()) {
+                mapSection.style.display = 'none';
+                console.log('Google Maps API not ready for modal map');
+                return;
+            }
+            
+            // Mostrar sección del mapa
+            mapSection.style.display = 'block';
+            
+            // Actualizar dirección
+            addressText.textContent = property.ubicacion || 'Costa Blanca, España';
+            
+            // Crear o actualizar el mapa del modal
+            setTimeout(() => {
+                modalPropertyMap = new google.maps.Map(mapContainer, {
+                    center: { lat, lng },
+                    zoom: 15,
+                    styles: getMapStyles(),
+                    mapTypeControl: false,
+                    fullscreenControl: true,
+                    streetViewControl: true,
+                    zoomControl: true
+                });
+                
+                // Añadir marcador
+                new google.maps.Marker({
+                    position: { lat, lng },
+                    map: modalPropertyMap,
+                    title: property.titulo || 'Property',
+                    icon: {
+                        path: google.maps.SymbolPath.CIRCLE,
+                        scale: 14,
+                        fillColor: '#B8860B',
+                        fillOpacity: 1,
+                        strokeColor: '#FFFFFF',
+                        strokeWeight: 3,
+                    },
+                    animation: google.maps.Animation.DROP
+                });
+            }, 100);
+        }
+        
+        // Estilos personalizados del mapa
+        function getMapStyles() {
+            return [
+                {
+                    featureType: 'water',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#a2daf2' }]
+                },
+                {
+                    featureType: 'landscape',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#f5f5dc' }]
+                },
+                {
+                    featureType: 'road',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#ffffff' }]
+                },
+                {
+                    featureType: 'poi.park',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#c5e8b7' }]
+                },
+                {
+                    featureType: 'poi',
+                    elementType: 'labels',
+                    stylers: [{ visibility: 'simplified' }]
+                },
+                {
+                    featureType: 'administrative',
+                    elementType: 'labels.text.fill',
+                    stylers: [{ color: '#444444' }]
+                }
+            ];
+        }
+        
+        // Resaltar marcador al hover sobre tarjeta de propiedad
+        function highlightMarker(propertyIndex) {
+            const markerData = mapMarkers.find(m => m.propertyIndex === propertyIndex);
+            if (markerData) {
+                markerData.marker.setIcon({
+                    ...markerData.marker.getIcon(),
+                    scale: 18,
+                    fillColor: '#FFD700'
+                });
+                markerData.marker.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
+            }
+        }
+        
+        function unhighlightMarker(propertyIndex) {
+            const markerData = mapMarkers.find(m => m.propertyIndex === propertyIndex);
+            if (markerData) {
+                markerData.marker.setIcon({
+                    ...markerData.marker.getIcon(),
+                    scale: 12,
+                    fillColor: '#B8860B'
+                });
+                markerData.marker.setZIndex(null);
+            }
+        }
 
         // ============================================
         // PRODUCTS FUNCTIONS
@@ -1958,6 +2690,28 @@
                     <ul class="modal-info-features-list" id="modal-info-features-list">
                         <!-- Features will be inserted here by JavaScript -->
                     </ul>
+                </div>
+                
+                <!-- Map Section -->
+                <div class="modal-map-section" id="modal-map-section" style="display: none;">
+                    <h3 class="modal-map-title">
+                        <svg class="w-6 h-6 text-[#B8860B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        Ubicación de la propiedad
+                    </h3>
+                    <div class="modal-map-container">
+                        <div id="modal-property-map">
+                            <!-- Modal map will be initialized here by JavaScript -->
+                        </div>
+                    </div>
+                    <p id="modal-map-address" class="mt-3 text-sm text-gray-600 flex items-center gap-2">
+                        <svg class="w-4 h-4 text-[#B8860B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                        </svg>
+                        <span id="modal-map-address-text"></span>
+                    </p>
                 </div>
                 
                 <!-- Contact Section -->
