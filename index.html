@@ -3138,14 +3138,22 @@
         
         // Callback cuando la API de Google Maps está lista
         function initMapsCallback() {
-            console.log('Google Maps API loaded successfully');
-            mapsApiLoaded = true;
-            
-            // Si ya hay propiedades cargadas, inicializar el mapa
-            if (propertiesData && propertiesData.length > 0) {
-                initPropertiesMap();
+            try {
+                console.log('Google Maps API loaded successfully');
+                mapsApiLoaded = true;
+                
+                // Si ya hay propiedades cargadas, inicializar el mapa
+                if (allPropertiesData && allPropertiesData.length > 0) {
+                    initPropertiesMap();
+                }
+            } catch (error) {
+                console.error('Error initializing Google Maps API:', error);
             }
         }
+        
+        // Exponer funciones globalmente para handlers onclick
+        // Exponer funciones globalmente para handlers onclick (se asignarán después de definirse)
+        // Estas asignaciones se harán al final del script después de que las funciones estén definidas
         
         // Verificar si la API de Maps está disponible
         function isMapsApiReady() {
@@ -3154,19 +3162,24 @@
         
         // Inicializar mapa principal de propiedades
         function initPropertiesMap() {
-            if (!isMapsApiReady()) {
-                console.log('Google Maps API not ready yet');
-                return;
-            }
-            
-            const mapContainer = document.getElementById('properties-map');
-            const mapLoading = document.getElementById('map-loading');
-            
-            if (!mapContainer) return;
+            try {
+                if (!isMapsApiReady()) {
+                    console.log('Google Maps API not ready yet');
+                    return;
+                }
+                
+                const mapContainer = document.getElementById('properties-map');
+                const mapLoading = document.getElementById('map-loading');
+                
+                if (!mapContainer) {
+                    console.warn('Map container not found');
+                    return;
+                }
             
             // Calcular centro del mapa basado en propiedades con coordenadas
-            const propertiesWithCoords = propertiesData.filter(p => 
-                p.latitude && p.longitude && 
+            const propertiesToUse = allPropertiesData.length > 0 ? allPropertiesData : [];
+            const propertiesWithCoords = propertiesToUse.filter(p => 
+                p && p.latitude && p.longitude && 
                 !isNaN(parseFloat(p.latitude)) && !isNaN(parseFloat(p.longitude))
             );
             
@@ -3201,12 +3214,18 @@
                 mapLoading.style.display = 'none';
             }
             
-            // Añadir marcadores
-            addPropertyMarkers();
-            
-            // Ajustar zoom para mostrar todos los marcadores
-            if (propertiesWithCoords.length > 1) {
-                fitMapToBounds();
+                // Añadir marcadores
+                addPropertyMarkers();
+                
+                // Ajustar zoom para mostrar todos los marcadores
+                if (propertiesWithCoords.length > 1) {
+                    fitMapToBounds();
+                }
+            } catch (error) {
+                console.error('Error initializing properties map:', error);
+                if (mapLoading) {
+                    mapLoading.innerHTML = '<p class="text-red-600">Error loading map</p>';
+                }
             }
         }
         
@@ -3217,7 +3236,10 @@
             // Limpiar marcadores anteriores
             clearMapMarkers();
             
-            propertiesData.forEach((property, index) => {
+            // Usar filteredProperties si hay filtros activos, sino allPropertiesData
+            const propertiesToShow = filteredProperties.length > 0 ? filteredProperties : allPropertiesData;
+            
+            propertiesToShow.forEach((property, index) => {
                 // Verificar que la propiedad tenga coordenadas válidas
                 if (!property.latitude || !property.longitude) return;
                 
@@ -3280,7 +3302,12 @@
                     });
                 });
                 
-                mapMarkers.push({ marker, infoWindow, propertyIndex: index });
+                // Encontrar el índice real en allPropertiesData
+                const realIndex = allPropertiesData.findIndex(p => 
+                    p.id === property.id || 
+                    (p.titulo === property.titulo && p.ubicacion === property.ubicacion)
+                );
+                mapMarkers.push({ marker, infoWindow, propertyIndex: realIndex >= 0 ? realIndex : index });
             });
         }
         
@@ -3311,16 +3338,25 @@
         
         // Abrir propiedad desde el mapa
         function openPropertyFromMap(index) {
-            if (propertiesData[index]) {
+            try {
                 // Cerrar InfoWindow
                 if (activeInfoWindow) {
                     activeInfoWindow.close();
                     activeInfoWindow = null;
                 }
-                // Abrir modal
-                openPropertyModal(propertiesData[index]);
+                
+                if (allPropertiesData && allPropertiesData[index]) {
+                    openPropertyModal(allPropertiesData[index]);
+                } else {
+                    console.warn('Property not found at index:', index);
+                }
+            } catch (error) {
+                console.error('Error opening property from map:', error);
             }
         }
+        
+        // Exponer función globalmente
+        window.openPropertyFromMap = openPropertyFromMap;
         
         // Limpiar marcadores del mapa
         function clearMapMarkers() {
@@ -4964,6 +5000,23 @@
         // INITIALIZATION ON PAGE LOAD
         // ============================================
         
+        // Exponer funciones globalmente para handlers onclick
+        // Esto debe hacerse después de que todas las funciones estén definidas
+        (function exposeGlobalFunctions() {
+            if (typeof selectVisitDate !== 'undefined') window.selectVisitDate = selectVisitDate;
+            if (typeof selectVisitTime !== 'undefined') window.selectVisitTime = selectVisitTime;
+            if (typeof openVisitRequestModal !== 'undefined') window.openVisitRequestModal = openVisitRequestModal;
+            if (typeof openCreateAlertModal !== 'undefined') window.openCreateAlertModal = openCreateAlertModal;
+            if (typeof viewAlertDetails !== 'undefined') window.viewAlertDetails = viewAlertDetails;
+            if (typeof deleteAlert !== 'undefined') window.deleteAlert = deleteAlert;
+            if (typeof viewMatchingProperties !== 'undefined') window.viewMatchingProperties = viewMatchingProperties;
+            if (typeof openPropertyFromMap !== 'undefined') window.openPropertyFromMap = openPropertyFromMap;
+            if (typeof togglePropertiesView !== 'undefined') window.togglePropertiesView = togglePropertiesView;
+            if (typeof toggleFavorite !== 'undefined') window.toggleFavorite = toggleFavorite;
+            if (typeof toggleShareMenu !== 'undefined') window.toggleShareMenu = toggleShareMenu;
+            if (typeof selectSearchHistory !== 'undefined') window.selectSearchHistory = selectSearchHistory;
+        })();
+        
         document.addEventListener('DOMContentLoaded', function() {
             // Inicializar modo oscuro
             initDarkMode();
@@ -5244,12 +5297,48 @@
         
         function deleteAlert(alertId, event) {
             if (event) event.stopPropagation();
-            if (confirm('¿Estás seguro de que quieres eliminar esta alerta?')) {
+            const confirmMsg = {
+                es: '¿Estás seguro de que quieres eliminar esta alerta?',
+                en: 'Are you sure you want to delete this alert?',
+                sv: 'Är du säker på att du vill radera denna notis?'
+            };
+            const lang = currentLanguage || 'es';
+            if (confirm(confirmMsg[lang] || confirmMsg.es)) {
                 savedAlerts = savedAlerts.filter(a => a.id !== alertId);
                 localStorage.setItem('propertyAlerts', JSON.stringify(savedAlerts));
                 renderAlertsList();
                 updateAlertsBadge();
             }
+        }
+        
+        function viewAlertDetails(alertId) {
+            const alert = savedAlerts.find(a => a.id === alertId);
+            if (!alert) return;
+            
+            // Aplicar filtros de la alerta
+            filterState.type = alert.type || '';
+            filterState.priceMax = alert.priceMax || '';
+            filterState.rooms = alert.rooms || '';
+            filterState.location = alert.location || '';
+            
+            // Actualizar inputs
+            const typeInput = document.getElementById('filter-type');
+            const priceInput = document.getElementById('filter-price-max');
+            const roomsInput = document.getElementById('filter-rooms');
+            const locationInput = document.getElementById('filter-location');
+            
+            if (typeInput) typeInput.value = filterState.type;
+            if (priceInput) priceInput.value = filterState.priceMax;
+            if (roomsInput) roomsInput.value = filterState.rooms;
+            if (locationInput) locationInput.value = filterState.location;
+            
+            applyFilters();
+            
+            // Cerrar panel
+            document.getElementById('alerts-panel')?.classList.remove('show');
+            
+            // Scroll a propiedades
+            document.getElementById('properties')?.scrollIntoView({ behavior: 'smooth' });
         }
         
         function checkForNewProperties() {
