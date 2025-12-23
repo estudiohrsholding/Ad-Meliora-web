@@ -2309,6 +2309,12 @@
                 
                 // Extraer el array de propiedades del objeto paginado
                 const properties = data.items || (Array.isArray(data) ? data : []);
+                
+                // Debug: Verificar estructura de propiedades (solo en desarrollo)
+                if (properties.length > 0 && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+                    console.log('Sample property structure:', properties[0]);
+                    console.log('Habitaciones field:', properties[0].habitaciones, 'Type:', typeof properties[0].habitaciones);
+                }
 
                 loadingState.classList.add('hidden');
 
@@ -2869,14 +2875,44 @@
                 
                 // Habitaciones
                 if (filterState.rooms) {
-                    const rooms = parseInt(property.habitaciones) || 0;
-                    if (rooms < parseInt(filterState.rooms)) return false;
+                    // Intentar múltiples nombres de campo posibles
+                    const roomsValue = property.habitaciones || property.bedrooms || property.num_habitaciones || property.numero_habitaciones;
+                    
+                    // Si la propiedad no tiene campo de habitaciones, excluirla del filtro
+                    if (roomsValue === null || roomsValue === undefined || roomsValue === '') {
+                        return false;
+                    }
+                    
+                    const rooms = parseInt(roomsValue);
+                    const minRooms = parseInt(filterState.rooms);
+                    
+                    // Si no es un número válido, excluir la propiedad
+                    if (isNaN(rooms) || isNaN(minRooms)) {
+                        return false;
+                    }
+                    
+                    // La propiedad debe tener al menos el número mínimo de habitaciones
+                    if (rooms < minRooms) {
+                        return false;
+                    }
                 }
                 
                 // Baños
                 if (filterState.bathrooms) {
-                    const bathrooms = parseInt(property.banos) || 0;
-                    if (bathrooms < parseInt(filterState.bathrooms)) return false;
+                    // Intentar múltiples nombres de campo posibles
+                    const bathroomsValue = property.banos || property.bathrooms || property.num_banos || property.numero_banos || 0;
+                    const bathrooms = parseInt(bathroomsValue);
+                    const minBathrooms = parseInt(filterState.bathrooms);
+                    
+                    // Si no es un número válido, excluir la propiedad
+                    if (isNaN(bathrooms) || isNaN(minBathrooms)) {
+                        return false;
+                    }
+                    
+                    // La propiedad debe tener al menos el número mínimo de baños
+                    if (bathrooms < minBathrooms) {
+                        return false;
+                    }
                 }
                 
                 // Metros cuadrados
