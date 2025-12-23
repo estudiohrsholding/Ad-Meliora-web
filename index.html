@@ -1411,9 +1411,9 @@
 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#properties" class="text-gray-700 hover:text-[#B8860B] transition-colors font-medium">Properties</a>
-                    <a href="#about" class="text-gray-700 hover:text-[#B8860B] transition-colors font-medium">About</a>
-                    <a href="#contact" class="text-gray-700 hover:text-[#B8860B] transition-colors font-medium">Contact</a>
+                    <a href="#properties" class="text-gray-700 hover:text-[#B8860B] transition-colors font-medium" data-i18n="nav.properties">Properties</a>
+                    <a href="#about" class="text-gray-700 hover:text-[#B8860B] transition-colors font-medium" data-i18n="nav.about">About</a>
+                    <a href="#contact" class="text-gray-700 hover:text-[#B8860B] transition-colors font-medium" data-i18n="nav.contact">Contact</a>
                 </div>
 
                 <!-- Desktop CTA -->
@@ -1425,24 +1425,24 @@
                         <button id="lang-sv" class="lang-btn px-2 py-1 text-sm rounded hover:bg-gray-100 transition-colors" data-lang="sv" aria-label="Svenska">SV</button>
                     </div>
                     <!-- Alerts Button -->
-                    <button id="alerts-button" class="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100 transition-colors relative" aria-label="Ver alertas" title="Alertas de propiedades">
+                    <button id="alerts-button" class="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100 transition-colors relative" data-i18n-aria="nav.alerts" data-i18n-title="nav.alerts" aria-label="Property Alerts" title="Property Alerts">
                         <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
                         </svg>
                         <span id="alerts-badge" class="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
                     </button>
                     <!-- Dark Mode Toggle -->
-                    <button id="dark-mode-toggle" class="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100 transition-colors" aria-label="Alternar modo oscuro" title="Modo oscuro">
+                    <button id="dark-mode-toggle" class="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100 transition-colors" data-i18n-aria="nav.darkMode" data-i18n-title="nav.darkMode" aria-label="Dark mode" title="Dark mode">
                         <svg id="dark-mode-icon" class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
                         </svg>
                     </button>
-                    <a href="#contact" class="text-gray-700 hover:text-[#B8860B] transition-colors font-medium text-sm">Owner Dashboard</a>
+                    <a href="#contact" class="text-gray-700 hover:text-[#B8860B] transition-colors font-medium text-sm" data-i18n="nav.dashboard">Owner Dashboard</a>
                     <a href="#contact" class="bg-gradient-to-r from-[#FFD700] to-[#B8860B] hover:from-[#B8860B] hover:to-[#B8860B]/90 text-white font-semibold shadow-lg hover:shadow-[#B8860B]/25 transition-all duration-200 px-4 py-2 rounded-lg text-sm flex items-center gap-2">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                         </svg>
-                        Get Help
+                        <span data-i18n="nav.getHelp">Get Help</span>
                     </a>
                 </div>
 
@@ -1457,16 +1457,16 @@
             <!-- Mobile Menu -->
             <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
                 <div class="px-4 py-4 space-y-4">
-                    <a href="#properties" class="block text-gray-700 hover:text-[#B8860B] transition-colors font-medium py-2">Properties</a>
-                    <a href="#about" class="block text-gray-700 hover:text-[#B8860B] transition-colors font-medium py-2">About</a>
-                    <a href="#contact" class="block text-gray-700 hover:text-[#B8860B] transition-colors font-medium py-2">Contact</a>
+                    <a href="#properties" class="block text-gray-700 hover:text-[#B8860B] transition-colors font-medium py-2" data-i18n="nav.properties">Properties</a>
+                    <a href="#about" class="block text-gray-700 hover:text-[#B8860B] transition-colors font-medium py-2" data-i18n="nav.about">About</a>
+                    <a href="#contact" class="block text-gray-700 hover:text-[#B8860B] transition-colors font-medium py-2" data-i18n="nav.contact">Contact</a>
                     <div class="pt-4 border-t border-gray-200 space-y-3">
-                        <a href="#contact" class="block text-gray-700 hover:text-[#B8860B] transition-colors font-medium py-2">Owner Dashboard</a>
+                        <a href="#contact" class="block text-gray-700 hover:text-[#B8860B] transition-colors font-medium py-2" data-i18n="nav.dashboard">Owner Dashboard</a>
                         <a href="#contact" class="w-full bg-gradient-to-r from-[#FFD700] to-[#B8860B] hover:from-[#B8860B] hover:to-[#B8860B]/90 text-white font-semibold shadow-lg hover:shadow-[#B8860B]/25 transition-all duration-200 px-4 py-2 rounded-lg text-sm flex items-center justify-center gap-2">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                             </svg>
-                            Get Help
+                            <span data-i18n="nav.getHelp">Get Help</span>
                         </a>
                     </div>
                 </div>
@@ -1555,10 +1555,10 @@
         <div class="max-w-7xl mx-auto">
             <!-- Header -->
             <div class="text-center mb-12">
-                <h2 class="text-4xl sm:text-5xl font-heading font-bold text-gray-950 mb-4">
+                <h2 class="text-4xl sm:text-5xl font-heading font-bold text-gray-950 mb-4" data-i18n="properties.title">
                     Featured Coastal Properties & Investments
                 </h2>
-                <p class="text-xl text-gray-700 max-w-3xl mx-auto mb-8">
+                <p class="text-xl text-gray-700 max-w-3xl mx-auto mb-8" data-i18n="properties.subtitle">
                     Discover our handpicked selection of premium properties across Costa Blanca
                 </p>
                 
@@ -1566,19 +1566,19 @@
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-12 max-w-4xl mx-auto">
                     <div class="text-center">
                         <div id="properties-count" class="text-3xl font-bold text-gray-950 mb-2">0</div>
-                        <div class="text-sm text-gray-600">Premium Properties</div>
+                        <div class="text-sm text-gray-600" data-i18n="properties.count">Premium Properties</div>
                     </div>
                     <div class="text-center">
                         <div class="text-3xl font-bold text-gray-950 mb-2">3</div>
-                        <div class="text-sm text-gray-600">Coastal Towns</div>
+                        <div class="text-sm text-gray-600" data-i18n="stats.coastalTowns">Coastal Towns</div>
                     </div>
                     <div class="text-center">
                         <div class="text-3xl font-bold text-gray-950 mb-2">24/7</div>
-                        <div class="text-sm text-gray-600">B.A.I. Support</div>
+                        <div class="text-sm text-gray-600" data-i18n="stats.baiSupport">B.A.I. Support</div>
                     </div>
                     <div class="text-center">
                         <div class="text-3xl font-bold text-gray-950 mb-2">5★</div>
-                        <div class="text-sm text-gray-600">Expert Rating</div>
+                        <div class="text-sm text-gray-600" data-i18n="stats.expertRating">Expert Rating</div>
                     </div>
                 </div>
                 
@@ -1590,9 +1590,10 @@
                             <input 
                                 type="text" 
                                 id="search-input" 
-                                placeholder="Buscar por título, descripción o ubicación..." 
+                                placeholder="Search by title, description or location..." 
+                                data-i18n-placeholder="properties.search"
                                 class="w-full px-4 py-3 pl-12 pr-32 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#B8860B] focus:border-transparent text-gray-900"
-                                aria-label="Buscar propiedades"
+                                aria-label="Search properties"
                             >
                             <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
@@ -1613,22 +1614,23 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
                         <!-- Tipo de Propiedad -->
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Tipo</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-i18n="filters.type">Type</label>
                             <select id="filter-type" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#B8860B] text-gray-900">
-                                <option value="">Todos</option>
-                                <option value="SALE">Venta</option>
-                                <option value="RENT">Alquiler</option>
-                                <option value="SHORT-TERM RENTAL">Alquiler Corto</option>
+                                <option value="" data-i18n="filters.all">All</option>
+                                <option value="SALE" data-i18n="filters.sale">Sale</option>
+                                <option value="RENT" data-i18n="filters.rent">Rent</option>
+                                <option value="SHORT-TERM RENTAL" data-i18n="filters.shortTerm">Short-term</option>
                             </select>
                         </div>
                         
                         <!-- Rango de Precio -->
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Precio Máx. (€)</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-i18n="filters.maxPrice">Max Price (€)</label>
                             <input 
                                 type="number" 
                                 id="filter-price-max" 
-                                placeholder="Sin límite" 
+                                placeholder="No limit" 
+                                data-i18n-placeholder="filters.noLimit"
                                 class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#B8860B] text-gray-900"
                                 min="0"
                             >
@@ -1636,9 +1638,9 @@
                         
                         <!-- Habitaciones -->
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Habitaciones</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-i18n="filters.rooms">Bedrooms</label>
                             <select id="filter-rooms" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#B8860B] text-gray-900">
-                                <option value="">Cualquiera</option>
+                                <option value="" data-i18n="filters.any">Any</option>
                                 <option value="1">1+</option>
                                 <option value="2">2+</option>
                                 <option value="3">3+</option>
@@ -1649,9 +1651,9 @@
                         
                         <!-- Baños -->
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Baños</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-i18n="filters.bathrooms">Bathrooms</label>
                             <select id="filter-bathrooms" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#B8860B] text-gray-900">
-                                <option value="">Cualquiera</option>
+                                <option value="" data-i18n="filters.any">Any</option>
                                 <option value="1">1+</option>
                                 <option value="2">2+</option>
                                 <option value="3">3+</option>
@@ -1670,12 +1672,12 @@
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                             </svg>
-                            Filtros Avanzados
+                            <span data-i18n="filters.advanced">Advanced Filters</span>
                         </button>
                         <div id="advanced-filters" class="hidden mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                             <!-- Metros Cuadrados -->
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">M² Mínimos</label>
+                                <label class="block text-sm font-medium text-gray-700 mb-2" data-i18n="filters.minSqm">Min Sq. Meters</label>
                                 <input 
                                     type="number" 
                                     id="filter-m2-min" 
@@ -1687,45 +1689,46 @@
                             
                             <!-- Ubicación -->
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Ubicación</label>
+                                <label class="block text-sm font-medium text-gray-700 mb-2" data-i18n="filters.location">Location</label>
                                 <input 
                                     type="text" 
                                     id="filter-location" 
-                                    placeholder="Ciudad o zona..." 
+                                    placeholder="City or area..." 
+                                    data-i18n-placeholder="filters.locationPlaceholder"
                                     class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#B8860B] text-gray-900"
                                 >
                             </div>
                             
                             <!-- Características -->
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Características</label>
+                                <label class="block text-sm font-medium text-gray-700 mb-2" data-i18n="filters.features">Features</label>
                                 <div class="flex flex-wrap gap-2">
                                     <label class="flex items-center gap-1 text-sm text-gray-700 cursor-pointer">
                                         <input type="checkbox" id="filter-pool" value="piscina" class="rounded border-gray-300 text-[#B8860B] focus:ring-[#B8860B]">
-                                        <span>Piscina</span>
+                                        <span data-i18n="filters.pool">Pool</span>
                                     </label>
                                     <label class="flex items-center gap-1 text-sm text-gray-700 cursor-pointer">
                                         <input type="checkbox" id="filter-parking" value="parking" class="rounded border-gray-300 text-[#B8860B] focus:ring-[#B8860B]">
-                                        <span>Parking</span>
+                                        <span data-i18n="filters.parking">Parking</span>
                                     </label>
                                     <label class="flex items-center gap-1 text-sm text-gray-700 cursor-pointer">
                                         <input type="checkbox" id="filter-terrace" value="terraza" class="rounded border-gray-300 text-[#B8860B] focus:ring-[#B8860B]">
-                                        <span>Terraza</span>
+                                        <span data-i18n="filters.terrace">Terrace</span>
                                     </label>
                                 </div>
                             </div>
                             
                             <!-- Ordenar Por -->
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Ordenar Por</label>
+                                <label class="block text-sm font-medium text-gray-700 mb-2" data-i18n="sort.label">Sort By</label>
                                 <select id="sort-by" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#B8860B] text-gray-900">
-                                    <option value="relevance">Relevancia</option>
-                                    <option value="price-asc">Precio: Menor a Mayor</option>
-                                    <option value="price-desc">Precio: Mayor a Menor</option>
-                                    <option value="m2-desc">Metros: Mayor a Menor</option>
-                                    <option value="m2-asc">Metros: Menor a Mayor</option>
-                                    <option value="date-desc">Más Recientes</option>
-                                    <option value="date-asc">Más Antiguas</option>
+                                    <option value="relevance" data-i18n="sort.relevance">Relevance</option>
+                                    <option value="price-asc" data-i18n="sort.priceAsc">Price: Low to High</option>
+                                    <option value="price-desc" data-i18n="sort.priceDesc">Price: High to Low</option>
+                                    <option value="m2-desc" data-i18n="sort.sqmDesc">Size: Large to Small</option>
+                                    <option value="m2-asc" data-i18n="sort.sqmAsc">Size: Small to Large</option>
+                                    <option value="date-desc" data-i18n="sort.newest">Newest</option>
+                                    <option value="date-asc" data-i18n="sort.oldest">Oldest</option>
                                 </select>
                             </div>
                         </div>
@@ -1734,30 +1737,31 @@
                     <!-- Filter Actions -->
                     <div class="flex flex-wrap items-center justify-between gap-4">
                         <div class="flex items-center gap-2">
-                            <span id="filtered-count" class="text-sm text-gray-600">Mostrando <strong id="filtered-count-number">0</strong> propiedades</span>
+                            <span id="filtered-count" class="text-sm text-gray-600"><span data-i18n="filters.showing">Showing</span> <strong id="filtered-count-number">0</strong> <span data-i18n="filters.properties">properties</span></span>
                             <button 
                                 id="clear-filters-btn" 
                                 class="text-sm text-[#B8860B] hover:text-[#8B6508] font-medium hidden"
-                                aria-label="Limpiar filtros"
+                                aria-label="Clear filters"
+                                data-i18n="filters.clearAll"
                             >
-                                Limpiar filtros
+                                Clear filters
                             </button>
                         </div>
                         <div class="flex items-center gap-2">
                             <!-- View Toggle: Grid/List/Map -->
-                            <button id="view-grid-btn" class="map-toggle-btn active" onclick="togglePropertiesView('grid')" aria-label="Vista de cuadrícula">
+                            <button id="view-grid-btn" class="map-toggle-btn active" onclick="togglePropertiesView('grid')" aria-label="Grid view" data-i18n-aria="view.gridAria">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
                                 </svg>
-                                Grid
+                                <span data-i18n="view.grid">Grid</span>
                             </button>
-                            <button id="view-list-btn" class="map-toggle-btn" onclick="togglePropertiesView('list')" aria-label="Vista de lista">
+                            <button id="view-list-btn" class="map-toggle-btn" onclick="togglePropertiesView('list')" aria-label="List view" data-i18n-aria="view.listAria">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                                 </svg>
-                                Lista
+                                <span data-i18n="view.list">List</span>
                             </button>
-                            <button id="view-map-btn" class="map-toggle-btn" onclick="togglePropertiesView('map')" aria-label="Vista de mapa">
+                            <button id="view-map-btn" class="map-toggle-btn" onclick="togglePropertiesView('map')" aria-label="Map view" data-i18n-aria="view.mapAria">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
                                 </svg>
@@ -1790,7 +1794,7 @@
                 <div id="properties-grid-wrapper" class="properties-grid-wrapper">
                     <!-- Grid View -->
                     <div id="properties-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden">
-                        <!-- Properties will be inserted here by JavaScript -->
+                <!-- Properties will be inserted here by JavaScript -->
                     </div>
                     
                     <!-- List View -->
@@ -2031,23 +2035,56 @@
 
         function getTypeLabel(type) {
             const normalizedType = (type || '').toUpperCase();
+            const labels = {
+                es: {
+                    sale: 'En Venta',
+                    rent: 'Alquiler Largo',
+                    shortTerm: 'Alquiler Corto',
+                    studio: 'Estudio',
+                    property: 'Propiedad'
+                },
+                en: {
+                    sale: 'For Sale',
+                    rent: 'Long-Term Rental',
+                    shortTerm: 'Short-Term Rental',
+                    studio: 'Studio',
+                    property: 'Property'
+                },
+                sv: {
+                    sale: 'Till Salu',
+                    rent: 'Långtidsuthyrning',
+                    shortTerm: 'Korttidsuthyrning',
+                    studio: 'Studio',
+                    property: 'Fastighet'
+                }
+            };
+            const lang = currentLanguage || 'es';
+            const l = labels[lang] || labels.es;
+            
             if (normalizedType === 'SALE' || normalizedType === 'FOR SALE') {
-                return 'For Sale';
+                return l.sale;
             }
             if (normalizedType === 'RENT' || normalizedType === 'RENTAL' || normalizedType === 'LONG-TERM RENTAL') {
-                return 'Long-Term Rental';
+                return l.rent;
             }
             if (normalizedType === 'SHORT-TERM RENTAL') {
-                return 'Short-Term Rental';
+                return l.shortTerm;
             }
             if (normalizedType === 'STUDIO') {
-                return 'Studio';
+                return l.studio;
             }
-            return type || 'Property';
+            return type || l.property;
         }
 
         function formatPrice(price) {
-            if (!price && price !== 0) return 'Price on request';
+            const priceOnRequest = {
+                es: 'Precio a consultar',
+                en: 'Price on request',
+                sv: 'Pris på begäran'
+            };
+            const lang = currentLanguage || 'es';
+            
+            if (!price && price !== 0) return priceOnRequest[lang] || priceOnRequest.es;
             // If price is already formatted, return as is
             if (typeof price === 'string' && (price.includes('€') || price.includes('&euro;') || price.includes('/'))) {
                 return price;
@@ -2064,7 +2101,8 @@
             if (typeof numPrice === 'number') {
                 // Para precios de venta, mostrar sin decimales. Para alquiler, mostrar con decimales si los tiene
                 const hasDecimals = numPrice % 1 !== 0;
-                return `€${numPrice.toLocaleString('es-ES', { 
+                const locale = lang === 'sv' ? 'sv-SE' : (lang === 'en' ? 'en-GB' : 'es-ES');
+                return `€${numPrice.toLocaleString(locale, { 
                     minimumFractionDigits: hasDecimals ? 2 : 0, 
                     maximumFractionDigits: hasDecimals ? 2 : 0 
                 })}`;
@@ -3082,7 +3120,7 @@
             }
             return badges.join(' ');
         }
-        
+
         // Load properties on page load
         fetchProperties();
 
@@ -4213,54 +4251,639 @@
         
         const translations = {
             es: {
-                search: 'Buscar por título, descripción o ubicación...',
-                filters: 'Filtros Avanzados',
-                sort: 'Ordenar Por',
-                view: 'Vista',
-                grid: 'Grid',
-                list: 'Lista',
-                map: 'Mapa',
-                split: 'Split',
-                favorites: 'Favoritos',
-                share: 'Compartir',
-                compare: 'Comparar',
-                new: 'Nuevo',
-                featured: 'Destacado',
-                available: 'Disponible'
+                // Navbar
+                'nav.properties': 'Propiedades',
+                'nav.contact': 'Contacto',
+                'nav.about': 'Nosotros',
+                'nav.services': 'Servicios',
+                'nav.dashboard': 'Panel de Propietario',
+                'nav.listProperty': 'Anunciar Propiedad',
+                'nav.alerts': 'Alertas de propiedades',
+                'nav.darkMode': 'Modo oscuro',
+                'nav.getHelp': 'Ayuda',
+                
+                // Hero
+                'hero.title': 'Tu Próxima Propiedad Espera',
+                'hero.subtitle': 'Servicio confiable - ¡contáctanos!',
+                'hero.cta': 'Contáctanos',
+                'hero.premiumProperties': 'Propiedades Premium',
+                'hero.happyClients': 'Clientes Satisfechos',
+                'hero.yearsExperience': 'Años de Experiencia',
+                
+                // Properties Section
+                'properties.title': 'Propiedades Destacadas en la Costa',
+                'properties.subtitle': 'Descubre nuestra selección de propiedades premium en la Costa Blanca',
+                'properties.count': 'Propiedades Premium',
+                'properties.search': 'Buscar por título, descripción o ubicación...',
+                'properties.clearHistory': 'Limpiar historial',
+                
+                // Stats
+                'stats.coastalTowns': 'Localidades Costeras',
+                'stats.baiSupport': 'Soporte B.A.I.',
+                'stats.expertRating': 'Calificación Experta',
+                
+                // Filters
+                'filters.type': 'Tipo',
+                'filters.all': 'Todos',
+                'filters.sale': 'Venta',
+                'filters.rent': 'Alquiler',
+                'filters.shortTerm': 'Corto plazo',
+                'filters.maxPrice': 'Precio máx.',
+                'filters.rooms': 'Habitaciones',
+                'filters.any': 'Cualquiera',
+                'filters.bathrooms': 'Baños',
+                'filters.sqm': 'Metros²',
+                'filters.location': 'Ubicación',
+                'filters.allLocations': 'Todas',
+                'filters.advanced': 'Filtros Avanzados',
+                'filters.features': 'Características',
+                'filters.pool': 'Piscina',
+                'filters.parking': 'Parking',
+                'filters.terrace': 'Terraza',
+                'filters.garden': 'Jardín',
+                'filters.airConditioning': 'Aire acondicionado',
+                'filters.elevator': 'Ascensor',
+                'filters.results': 'resultados',
+                'filters.clearAll': 'Limpiar filtros',
+                'filters.noLimit': 'Sin límite',
+                'filters.minSqm': 'M² mínimos',
+                'filters.locationPlaceholder': 'Ciudad o zona...',
+                'filters.showing': 'Mostrando',
+                'filters.properties': 'propiedades',
+                
+                // Sort
+                'sort.label': 'Ordenar:',
+                'sort.relevance': 'Relevancia',
+                'sort.priceAsc': 'Precio: menor a mayor',
+                'sort.priceDesc': 'Precio: mayor a menor',
+                'sort.newest': 'Más reciente',
+                'sort.sqmAsc': 'm² menor a mayor',
+                'sort.sqmDesc': 'm² mayor a menor',
+                'sort.oldest': 'Más antiguas',
+                
+                // Views
+                'view.grid': 'Cuadrícula',
+                'view.list': 'Lista',
+                'view.map': 'Mapa',
+                'view.split': 'Dividida',
+                'view.gridAria': 'Vista de cuadrícula',
+                'view.listAria': 'Vista de lista',
+                'view.mapAria': 'Vista de mapa',
+                'view.splitAria': 'Vista dividida',
+                
+                // Property Card
+                'property.bedrooms': 'hab.',
+                'property.bathrooms': 'baños',
+                'property.sqm': 'm²',
+                'property.new': 'Nuevo',
+                'property.featured': 'Destacado',
+                'property.available': 'Disponible',
+                'property.gps': 'GPS',
+                'property.viewDetails': 'Ver Detalles',
+                'property.addFavorite': 'Añadir a favoritos',
+                'property.removeFavorite': 'Quitar de favoritos',
+                'property.share': 'Compartir',
+                'property.compare': 'Comparar',
+                'property.perMonth': '/mes',
+                
+                // Share
+                'share.facebook': 'Facebook',
+                'share.twitter': 'Twitter',
+                'share.whatsapp': 'WhatsApp',
+                'share.email': 'Email',
+                'share.copyLink': 'Copiar enlace',
+                'share.linkCopied': '¡Enlace copiado!',
+                
+                // Comparator
+                'compare.title': 'Comparador',
+                'compare.compare': 'Comparar',
+                'compare.clear': 'Limpiar',
+                'compare.modalTitle': 'Comparación de Propiedades',
+                'compare.price': 'Precio',
+                'compare.type': 'Tipo',
+                'compare.location': 'Ubicación',
+                'compare.size': 'Tamaño',
+                'compare.rooms': 'Habitaciones',
+                'compare.baths': 'Baños',
+                'compare.features': 'Características',
+                
+                // Modal
+                'modal.description': 'Descripción',
+                'modal.features': 'Características',
+                'modal.location': 'Ubicación',
+                'modal.contactTitle': '¡Contáctenos para más detalles o para concertar una visita!',
+                'modal.requestVisit': 'Solicitar Visita',
+                'modal.contactForm': 'Formulario de Contacto',
+                'modal.name': 'Nombre',
+                'modal.email': 'Email',
+                'modal.phone': 'Teléfono',
+                'modal.message': 'Mensaje',
+                'modal.messagePlaceholder': 'Me interesa esta propiedad...',
+                'modal.sendMessage': 'Enviar Mensaje',
+                'modal.messageSent': '¡Mensaje enviado! Te contactaremos pronto.',
+                
+                // Mortgage Calculator
+                'mortgage.title': 'Calculadora de Hipoteca',
+                'mortgage.price': 'Precio de la propiedad',
+                'mortgage.downPayment': 'Entrada',
+                'mortgage.interestRate': 'Interés anual (%)',
+                'mortgage.years': 'Años',
+                'mortgage.monthlyPayment': 'Cuota Mensual Estimada',
+                
+                // ROI Calculator
+                'roi.title': 'Calculadora de ROI (Retorno de Inversión)',
+                'roi.purchasePrice': 'Precio de Compra (€)',
+                'roi.monthlyRent': 'Alquiler Mensual Estimado (€)',
+                'roi.annualExpenses': 'Gastos Anuales (€)',
+                'roi.expensesPlaceholder': 'IBI, comunidad, mantenimiento...',
+                'roi.occupancy': 'Ocupación Anual (%)',
+                'roi.annualIncome': 'Ingresos Anuales',
+                'roi.annualProfit': 'Beneficio Anual',
+                'roi.percentage': 'ROI Anual',
+                'roi.paybackYears': 'Años para Recuperar Inversión',
+                
+                // Visit Request
+                'visit.title': 'Solicitar Visita',
+                'visit.date': 'Fecha de Visita',
+                'visit.time': 'Hora Preferida',
+                'visit.messageOptional': 'Mensaje (opcional)',
+                'visit.confirm': 'Confirmar Visita',
+                'visit.success': '¡Visita solicitada!',
+                'visit.selectDateTime': 'Por favor, selecciona una fecha y hora para la visita',
+                
+                // Alerts
+                'alerts.title': 'Alertas Guardadas',
+                'alerts.empty': 'No tienes alertas guardadas',
+                'alerts.createNew': 'Crear Nueva Alerta',
+                'alerts.createTitle': 'Crear Alerta de Propiedades',
+                'alerts.alertName': 'Nombre de la Alerta',
+                'alerts.alertNamePlaceholder': 'Ej: Pisos 3 hab. en Alicante',
+                'alerts.emailNotifications': 'Email para Notificaciones',
+                'alerts.create': 'Crear Alerta',
+                'alerts.delete': 'Eliminar',
+                'alerts.deleteConfirm': '¿Estás seguro de que quieres eliminar esta alerta?',
+                'alerts.created': '¡Alerta creada! Te notificaremos cuando haya propiedades que coincidan.',
+                'alerts.newPropertyFound': 'Nueva propiedad encontrada',
+                'alerts.newPropertiesFound': 'Nuevas propiedades encontradas',
+                'alerts.matches': 'coincidencia',
+                'alerts.matchesPlural': 'coincidencias',
+                'alerts.viewProperties': 'Ver Propiedades',
+                'alerts.close': 'Cerrar',
+                
+                // Pagination
+                'pagination.previous': 'Anterior',
+                'pagination.next': 'Siguiente',
+                'pagination.page': 'Página',
+                'pagination.of': 'de',
+                
+                // Contact Section
+                'contact.title': 'Ponte en Contacto',
+                'contact.subtitle': 'Estamos aquí para ayudarte a encontrar tu propiedad ideal',
+                'contact.phone': 'Teléfono',
+                'contact.email': 'Email',
+                'contact.address': 'Dirección',
+                
+                // Footer
+                'footer.rights': 'Todos los derechos reservados',
+                'footer.privacy': 'Privacidad',
+                'footer.terms': 'Términos',
+                
+                // General
+                'general.loading': 'Cargando...',
+                'general.error': 'Error',
+                'general.close': 'Cerrar',
+                'general.save': 'Guardar',
+                'general.cancel': 'Cancelar',
+                'general.yes': 'Sí',
+                'general.no': 'No',
+                'general.months': ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                'general.days': ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb']
             },
             en: {
-                search: 'Search by title, description or location...',
-                filters: 'Advanced Filters',
-                sort: 'Sort By',
-                view: 'View',
-                grid: 'Grid',
-                list: 'List',
-                map: 'Map',
-                split: 'Split',
-                favorites: 'Favorites',
-                share: 'Share',
-                compare: 'Compare',
-                new: 'New',
-                featured: 'Featured',
-                available: 'Available'
+                // Navbar
+                'nav.properties': 'Properties',
+                'nav.contact': 'Contact',
+                'nav.about': 'About',
+                'nav.services': 'Services',
+                'nav.dashboard': 'Owner Dashboard',
+                'nav.listProperty': 'List Your Property',
+                'nav.alerts': 'Property Alerts',
+                'nav.darkMode': 'Dark mode',
+                'nav.getHelp': 'Get Help',
+                
+                // Hero
+                'hero.title': 'Your Next Property Awaits',
+                'hero.subtitle': 'Reliable service - contact us!',
+                'hero.cta': 'Contact Us',
+                'hero.premiumProperties': 'Premium Properties',
+                'hero.happyClients': 'Happy Clients',
+                'hero.yearsExperience': 'Years Experience',
+                
+                // Properties Section
+                'properties.title': 'Featured Coastal Properties & Investments',
+                'properties.subtitle': 'Discover our handpicked selection of premium properties across Costa Blanca',
+                'properties.count': 'Premium Properties',
+                'properties.search': 'Search by title, description or location...',
+                'properties.clearHistory': 'Clear history',
+                
+                // Stats
+                'stats.coastalTowns': 'Coastal Towns',
+                'stats.baiSupport': 'B.A.I. Support',
+                'stats.expertRating': 'Expert Rating',
+                
+                // Filters
+                'filters.type': 'Type',
+                'filters.all': 'All',
+                'filters.sale': 'Sale',
+                'filters.rent': 'Rent',
+                'filters.shortTerm': 'Short-term',
+                'filters.maxPrice': 'Max price',
+                'filters.rooms': 'Bedrooms',
+                'filters.any': 'Any',
+                'filters.bathrooms': 'Bathrooms',
+                'filters.sqm': 'Sq. meters',
+                'filters.location': 'Location',
+                'filters.allLocations': 'All',
+                'filters.advanced': 'Advanced Filters',
+                'filters.features': 'Features',
+                'filters.pool': 'Pool',
+                'filters.parking': 'Parking',
+                'filters.terrace': 'Terrace',
+                'filters.garden': 'Garden',
+                'filters.airConditioning': 'Air conditioning',
+                'filters.elevator': 'Elevator',
+                'filters.results': 'results',
+                'filters.clearAll': 'Clear filters',
+                'filters.noLimit': 'No limit',
+                'filters.minSqm': 'Min Sq. Meters',
+                'filters.locationPlaceholder': 'City or area...',
+                'filters.showing': 'Showing',
+                'filters.properties': 'properties',
+                
+                // Sort
+                'sort.label': 'Sort by:',
+                'sort.relevance': 'Relevance',
+                'sort.priceAsc': 'Price: low to high',
+                'sort.priceDesc': 'Price: high to low',
+                'sort.newest': 'Newest',
+                'sort.sqmAsc': 'Size: small to large',
+                'sort.sqmDesc': 'Size: large to small',
+                'sort.oldest': 'Oldest',
+                
+                // Views
+                'view.grid': 'Grid',
+                'view.list': 'List',
+                'view.map': 'Map',
+                'view.gridAria': 'Grid view',
+                'view.listAria': 'List view',
+                'view.mapAria': 'Map view',
+                'view.splitAria': 'Split view',
+                'view.split': 'Split',
+                
+                // Property Card
+                'property.bedrooms': 'beds',
+                'property.bathrooms': 'baths',
+                'property.sqm': 'sqm',
+                'property.new': 'New',
+                'property.featured': 'Featured',
+                'property.available': 'Available',
+                'property.gps': 'GPS',
+                'property.viewDetails': 'View Details',
+                'property.addFavorite': 'Add to favorites',
+                'property.removeFavorite': 'Remove from favorites',
+                'property.share': 'Share',
+                'property.compare': 'Compare',
+                'property.perMonth': '/month',
+                
+                // Share
+                'share.facebook': 'Facebook',
+                'share.twitter': 'Twitter',
+                'share.whatsapp': 'WhatsApp',
+                'share.email': 'Email',
+                'share.copyLink': 'Copy link',
+                'share.linkCopied': 'Link copied!',
+                
+                // Comparator
+                'compare.title': 'Comparator',
+                'compare.compare': 'Compare',
+                'compare.clear': 'Clear',
+                'compare.modalTitle': 'Property Comparison',
+                'compare.price': 'Price',
+                'compare.type': 'Type',
+                'compare.location': 'Location',
+                'compare.size': 'Size',
+                'compare.rooms': 'Bedrooms',
+                'compare.baths': 'Bathrooms',
+                'compare.features': 'Features',
+                
+                // Modal
+                'modal.description': 'Description',
+                'modal.features': 'Features',
+                'modal.location': 'Location',
+                'modal.contactTitle': 'Contact us for more details or to arrange a viewing!',
+                'modal.requestVisit': 'Request Visit',
+                'modal.contactForm': 'Contact Form',
+                'modal.name': 'Name',
+                'modal.email': 'Email',
+                'modal.phone': 'Phone',
+                'modal.message': 'Message',
+                'modal.messagePlaceholder': 'I am interested in this property...',
+                'modal.sendMessage': 'Send Message',
+                'modal.messageSent': 'Message sent! We will contact you soon.',
+                
+                // Mortgage Calculator
+                'mortgage.title': 'Mortgage Calculator',
+                'mortgage.price': 'Property price',
+                'mortgage.downPayment': 'Down payment',
+                'mortgage.interestRate': 'Annual interest (%)',
+                'mortgage.years': 'Years',
+                'mortgage.monthlyPayment': 'Estimated Monthly Payment',
+                
+                // ROI Calculator
+                'roi.title': 'ROI Calculator (Return on Investment)',
+                'roi.purchasePrice': 'Purchase Price (€)',
+                'roi.monthlyRent': 'Estimated Monthly Rent (€)',
+                'roi.annualExpenses': 'Annual Expenses (€)',
+                'roi.expensesPlaceholder': 'Taxes, community fees, maintenance...',
+                'roi.occupancy': 'Annual Occupancy (%)',
+                'roi.annualIncome': 'Annual Income',
+                'roi.annualProfit': 'Annual Profit',
+                'roi.percentage': 'Annual ROI',
+                'roi.paybackYears': 'Years to Recover Investment',
+                
+                // Visit Request
+                'visit.title': 'Request a Visit',
+                'visit.date': 'Visit Date',
+                'visit.time': 'Preferred Time',
+                'visit.messageOptional': 'Message (optional)',
+                'visit.confirm': 'Confirm Visit',
+                'visit.success': 'Visit requested!',
+                'visit.selectDateTime': 'Please select a date and time for the visit',
+                
+                // Alerts
+                'alerts.title': 'Saved Alerts',
+                'alerts.empty': 'You have no saved alerts',
+                'alerts.createNew': 'Create New Alert',
+                'alerts.createTitle': 'Create Property Alert',
+                'alerts.alertName': 'Alert Name',
+                'alerts.alertNamePlaceholder': 'Ex: 3 bed apartments in Alicante',
+                'alerts.emailNotifications': 'Email for Notifications',
+                'alerts.create': 'Create Alert',
+                'alerts.delete': 'Delete',
+                'alerts.deleteConfirm': 'Are you sure you want to delete this alert?',
+                'alerts.created': 'Alert created! We will notify you when matching properties are available.',
+                'alerts.newPropertyFound': 'New property found',
+                'alerts.newPropertiesFound': 'New properties found',
+                'alerts.matches': 'match',
+                'alerts.matchesPlural': 'matches',
+                'alerts.viewProperties': 'View Properties',
+                'alerts.close': 'Close',
+                
+                // Pagination
+                'pagination.previous': 'Previous',
+                'pagination.next': 'Next',
+                'pagination.page': 'Page',
+                'pagination.of': 'of',
+                
+                // Contact Section
+                'contact.title': 'Get in Touch',
+                'contact.subtitle': 'We are here to help you find your ideal property',
+                'contact.phone': 'Phone',
+                'contact.email': 'Email',
+                'contact.address': 'Address',
+                
+                // Footer
+                'footer.rights': 'All rights reserved',
+                'footer.privacy': 'Privacy',
+                'footer.terms': 'Terms',
+                
+                // General
+                'general.loading': 'Loading...',
+                'general.error': 'Error',
+                'general.close': 'Close',
+                'general.save': 'Save',
+                'general.cancel': 'Cancel',
+                'general.yes': 'Yes',
+                'general.no': 'No',
+                'general.months': ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                'general.days': ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
             },
             sv: {
-                search: 'Sök efter titel, beskrivning eller plats...',
-                filters: 'Avancerade filter',
-                sort: 'Sortera efter',
-                view: 'Vy',
-                grid: 'Rutnät',
-                list: 'Lista',
-                map: 'Karta',
-                split: 'Delad',
-                favorites: 'Favoriter',
-                share: 'Dela',
-                compare: 'Jämför',
-                new: 'Ny',
-                featured: 'Utvald',
-                available: 'Tillgänglig'
+                // Navbar
+                'nav.properties': 'Fastigheter',
+                'nav.contact': 'Kontakt',
+                'nav.about': 'Om oss',
+                'nav.services': 'Tjänster',
+                'nav.dashboard': 'Ägarpanel',
+                'nav.listProperty': 'Lista din fastighet',
+                'nav.alerts': 'Fastighetsnotiser',
+                'nav.darkMode': 'Mörkt läge',
+                'nav.getHelp': 'Hjälp',
+                
+                // Hero
+                'hero.title': 'Din Nästa Fastighet Väntar',
+                'hero.subtitle': 'Pålitlig service - kontakta oss!',
+                'hero.cta': 'Kontakta Oss',
+                'hero.premiumProperties': 'Premiumfastigheter',
+                'hero.happyClients': 'Nöjda Kunder',
+                'hero.yearsExperience': 'Års Erfarenhet',
+                
+                // Properties Section
+                'properties.title': 'Utvalda Kustfastigheter & Investeringar',
+                'properties.subtitle': 'Upptäck vårt handplockade urval av premiumfastigheter längs Costa Blanca',
+                'properties.count': 'Premiumfastigheter',
+                'properties.search': 'Sök efter titel, beskrivning eller plats...',
+                'properties.clearHistory': 'Rensa historik',
+                
+                // Stats
+                'stats.coastalTowns': 'Kuststäder',
+                'stats.baiSupport': 'B.A.I. Support',
+                'stats.expertRating': 'Expertbetyg',
+                
+                // Filters
+                'filters.type': 'Typ',
+                'filters.all': 'Alla',
+                'filters.sale': 'Till salu',
+                'filters.rent': 'Uthyres',
+                'filters.shortTerm': 'Korttid',
+                'filters.maxPrice': 'Max pris',
+                'filters.rooms': 'Sovrum',
+                'filters.any': 'Valfritt',
+                'filters.bathrooms': 'Badrum',
+                'filters.sqm': 'Kvadratmeter',
+                'filters.location': 'Plats',
+                'filters.allLocations': 'Alla',
+                'filters.advanced': 'Avancerade filter',
+                'filters.features': 'Egenskaper',
+                'filters.pool': 'Pool',
+                'filters.parking': 'Parkering',
+                'filters.terrace': 'Terrass',
+                'filters.garden': 'Trädgård',
+                'filters.airConditioning': 'Luftkonditionering',
+                'filters.elevator': 'Hiss',
+                'filters.results': 'resultat',
+                'filters.clearAll': 'Rensa filter',
+                'filters.noLimit': 'Ingen gräns',
+                'filters.minSqm': 'Min kvm',
+                'filters.locationPlaceholder': 'Stad eller område...',
+                'filters.showing': 'Visar',
+                'filters.properties': 'fastigheter',
+                
+                // Sort
+                'sort.label': 'Sortera:',
+                'sort.relevance': 'Relevans',
+                'sort.priceAsc': 'Pris: lågt till högt',
+                'sort.priceDesc': 'Pris: högt till lågt',
+                'sort.newest': 'Nyaste',
+                'sort.sqmAsc': 'Storlek: liten till stor',
+                'sort.sqmDesc': 'Storlek: stor till liten',
+                'sort.oldest': 'Äldsta',
+                
+                // Views
+                'view.grid': 'Rutnät',
+                'view.list': 'Lista',
+                'view.map': 'Karta',
+                'view.split': 'Delad',
+                'view.gridAria': 'Rutnätsvy',
+                'view.listAria': 'Listvy',
+                'view.mapAria': 'Kartvy',
+                'view.splitAria': 'Delad vy',
+                
+                // Property Card
+                'property.bedrooms': 'sovrum',
+                'property.bathrooms': 'badrum',
+                'property.sqm': 'kvm',
+                'property.new': 'Ny',
+                'property.featured': 'Utvald',
+                'property.available': 'Tillgänglig',
+                'property.gps': 'GPS',
+                'property.viewDetails': 'Visa Detaljer',
+                'property.addFavorite': 'Lägg till favoriter',
+                'property.removeFavorite': 'Ta bort från favoriter',
+                'property.share': 'Dela',
+                'property.compare': 'Jämför',
+                'property.perMonth': '/månad',
+                
+                // Share
+                'share.facebook': 'Facebook',
+                'share.twitter': 'Twitter',
+                'share.whatsapp': 'WhatsApp',
+                'share.email': 'E-post',
+                'share.copyLink': 'Kopiera länk',
+                'share.linkCopied': 'Länk kopierad!',
+                
+                // Comparator
+                'compare.title': 'Jämförare',
+                'compare.compare': 'Jämför',
+                'compare.clear': 'Rensa',
+                'compare.modalTitle': 'Fastighetsjämförelse',
+                'compare.price': 'Pris',
+                'compare.type': 'Typ',
+                'compare.location': 'Plats',
+                'compare.size': 'Storlek',
+                'compare.rooms': 'Sovrum',
+                'compare.baths': 'Badrum',
+                'compare.features': 'Egenskaper',
+                
+                // Modal
+                'modal.description': 'Beskrivning',
+                'modal.features': 'Egenskaper',
+                'modal.location': 'Plats',
+                'modal.contactTitle': 'Kontakta oss för mer information eller för att boka visning!',
+                'modal.requestVisit': 'Boka Visning',
+                'modal.contactForm': 'Kontaktformulär',
+                'modal.name': 'Namn',
+                'modal.email': 'E-post',
+                'modal.phone': 'Telefon',
+                'modal.message': 'Meddelande',
+                'modal.messagePlaceholder': 'Jag är intresserad av denna fastighet...',
+                'modal.sendMessage': 'Skicka Meddelande',
+                'modal.messageSent': 'Meddelande skickat! Vi kontaktar dig snart.',
+                
+                // Mortgage Calculator
+                'mortgage.title': 'Bolånekalkylator',
+                'mortgage.price': 'Fastighetspris',
+                'mortgage.downPayment': 'Kontantinsats',
+                'mortgage.interestRate': 'Årlig ränta (%)',
+                'mortgage.years': 'År',
+                'mortgage.monthlyPayment': 'Uppskattad Månadsbetalning',
+                
+                // ROI Calculator
+                'roi.title': 'ROI-kalkylator (Avkastning)',
+                'roi.purchasePrice': 'Köpeskilling (€)',
+                'roi.monthlyRent': 'Uppskattad Månadshyra (€)',
+                'roi.annualExpenses': 'Årliga Kostnader (€)',
+                'roi.expensesPlaceholder': 'Skatter, avgifter, underhåll...',
+                'roi.occupancy': 'Årlig Beläggning (%)',
+                'roi.annualIncome': 'Årlig Inkomst',
+                'roi.annualProfit': 'Årlig Vinst',
+                'roi.percentage': 'Årlig ROI',
+                'roi.paybackYears': 'År för Återbetalning',
+                
+                // Visit Request
+                'visit.title': 'Boka Visning',
+                'visit.date': 'Visningsdatum',
+                'visit.time': 'Föredragen Tid',
+                'visit.messageOptional': 'Meddelande (valfritt)',
+                'visit.confirm': 'Bekräfta Visning',
+                'visit.success': 'Visning bokad!',
+                'visit.selectDateTime': 'Välj datum och tid för visningen',
+                
+                // Alerts
+                'alerts.title': 'Sparade Notiser',
+                'alerts.empty': 'Du har inga sparade notiser',
+                'alerts.createNew': 'Skapa Ny Notis',
+                'alerts.createTitle': 'Skapa Fastighetsnotis',
+                'alerts.alertName': 'Notisnamn',
+                'alerts.alertNamePlaceholder': 'Ex: 3-rums lägenheter i Alicante',
+                'alerts.emailNotifications': 'E-post för Notiser',
+                'alerts.create': 'Skapa Notis',
+                'alerts.delete': 'Radera',
+                'alerts.deleteConfirm': 'Är du säker på att du vill radera denna notis?',
+                'alerts.created': 'Notis skapad! Vi meddelar dig när matchande fastigheter finns.',
+                'alerts.newPropertyFound': 'Ny fastighet hittad',
+                'alerts.newPropertiesFound': 'Nya fastigheter hittades',
+                'alerts.matches': 'matchning',
+                'alerts.matchesPlural': 'matchningar',
+                'alerts.viewProperties': 'Visa Fastigheter',
+                'alerts.close': 'Stäng',
+                
+                // Pagination
+                'pagination.previous': 'Föregående',
+                'pagination.next': 'Nästa',
+                'pagination.page': 'Sida',
+                'pagination.of': 'av',
+                
+                // Contact Section
+                'contact.title': 'Kontakta Oss',
+                'contact.subtitle': 'Vi hjälper dig att hitta din drömfastighet',
+                'contact.phone': 'Telefon',
+                'contact.email': 'E-post',
+                'contact.address': 'Adress',
+                
+                // Footer
+                'footer.rights': 'Alla rättigheter förbehållna',
+                'footer.privacy': 'Integritet',
+                'footer.terms': 'Villkor',
+                
+                // General
+                'general.loading': 'Laddar...',
+                'general.error': 'Fel',
+                'general.close': 'Stäng',
+                'general.save': 'Spara',
+                'general.cancel': 'Avbryt',
+                'general.yes': 'Ja',
+                'general.no': 'Nej',
+                'general.months': ['Januari', 'Februari', 'Mars', 'April', 'Maj', 'Juni', 'Juli', 'Augusti', 'September', 'Oktober', 'November', 'December'],
+                'general.days': ['Sön', 'Mån', 'Tis', 'Ons', 'Tor', 'Fre', 'Lör']
             }
         };
+        
+        // Función auxiliar para obtener traducción
+        function t(key) {
+            const lang = currentLanguage || 'es';
+            return translations[lang]?.[key] || translations.es[key] || key;
+        }
         
         function initLanguage() {
             const langBtns = document.querySelectorAll('.lang-btn');
@@ -4278,14 +4901,63 @@
             currentLanguage = lang;
             localStorage.setItem('propertyLanguage', lang);
             
+            // Actualizar botones de idioma
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
             });
             
-            // Actualizar textos (simplificado - se puede expandir)
-            const t = translations[lang] || translations.es;
-            const searchInput = document.getElementById('search-input');
-            if (searchInput) searchInput.placeholder = t.search;
+            // Actualizar atributo lang del HTML
+            document.documentElement.lang = lang;
+            
+            // Traducir todos los elementos con data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                const translation = t(key);
+                if (translation) {
+                    el.textContent = translation;
+                }
+            });
+            
+            // Traducir placeholders
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                const translation = t(key);
+                if (translation) {
+                    el.placeholder = translation;
+                }
+            });
+            
+            // Traducir títulos (tooltips)
+            document.querySelectorAll('[data-i18n-title]').forEach(el => {
+                const key = el.getAttribute('data-i18n-title');
+                const translation = t(key);
+                if (translation) {
+                    el.title = translation;
+                }
+            });
+            
+            // Traducir aria-labels
+            document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+                const key = el.getAttribute('data-i18n-aria');
+                const translation = t(key);
+                if (translation) {
+                    el.setAttribute('aria-label', translation);
+                }
+            });
+            
+            // Actualizar opciones de select
+            document.querySelectorAll('select option[data-i18n]').forEach(option => {
+                const key = option.getAttribute('data-i18n');
+                const translation = t(key);
+                if (translation) {
+                    option.textContent = translation;
+                }
+            });
+            
+            // Re-renderizar propiedades si existen
+            if (typeof renderFilteredProperties === 'function' && allPropertiesData.length > 0) {
+                renderFilteredProperties();
+            }
         }
         
         // ============================================
@@ -4787,7 +5459,7 @@
                 resultDiv.classList.remove('hidden');
             }
         }
-        
+
         // ============================================
         // PRODUCTS FUNCTIONS
         // ============================================
