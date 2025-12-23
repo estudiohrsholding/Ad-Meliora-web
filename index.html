@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Ad Meliora Real Estate - Premium Properties on Costa Blanca</title>
     <meta name="description" content="Long-term rentals, short-term rentals and sales on Costa Blanca. Reliable service-contact us!">
     
@@ -104,6 +104,34 @@
         /* Smooth scrolling */
         html {
             scroll-behavior: smooth;
+        }
+        
+        /* CRITICAL: Prevenir overflow horizontal y asegurar responsive */
+        * {
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Prevenir que elementos se salgan del viewport */
+        img, video, iframe, embed, object {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Asegurar que contenedores principales no excedan el ancho */
+        section, div, main, article, aside, header, footer {
+            max-width: 100%;
         }
         
         /* Property card hover effects */
@@ -499,10 +527,58 @@
         
         /* Responsive adjustments */
         @media (max-width: 768px) {
+            /* Navbar mobile fixes */
+            #navbar {
+                padding-left: 0;
+                padding-right: 0;
+            }
+            
+            #navbar .max-w-7xl {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            /* Hero section mobile */
+            #home {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            /* Properties section mobile */
+            #properties {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            /* Search bar mobile */
+            #search-input {
+                font-size: 16px; /* Previene zoom en iOS */
+                padding-left: 2.75rem;
+                padding-right: 2.75rem;
+            }
+            
+            /* Filters mobile */
+            .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-4 {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Property cards mobile */
+            .property-card {
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            /* Modal mobile */
             .modal-content {
                 max-width: 100vw;
                 max-height: 100vh;
                 border-radius: 0;
+                margin: 0;
+                width: 100%;
+            }
+            
+            .modal {
+                padding: 0;
             }
             
             .modal-carousel-container {
@@ -516,6 +592,139 @@
             
             .modal-info-title {
                 font-size: 1.5rem;
+            }
+            
+            /* Chat widget mobile */
+            #chat-widget {
+                width: 100vw;
+                height: 100vh;
+                bottom: 0;
+                right: 0;
+                border-radius: 0;
+            }
+            
+            #chat-widget > div {
+                width: 100%;
+                height: 100%;
+                border-radius: 0;
+            }
+            
+            #chat-toggle-btn {
+                bottom: 1rem;
+                right: 1rem;
+                width: 3.5rem;
+                height: 3.5rem;
+            }
+            
+            /* Comparator bar mobile */
+            #comparator-bar {
+                flex-wrap: wrap;
+                padding: 0.75rem;
+                gap: 0.5rem;
+            }
+            
+            .comparator-item {
+                min-width: 60px;
+                max-width: 80px;
+            }
+            
+            /* Pagination mobile */
+            .pagination {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                justify-content: center;
+            }
+            
+            .pagination-btn {
+                min-width: 2.5rem;
+                padding: 0.5rem 0.75rem;
+            }
+            
+            /* Hero section mobile */
+            #home h1 {
+                font-size: 2.5rem;
+                line-height: 1.2;
+                word-wrap: break-word;
+            }
+            
+            #home p {
+                font-size: 1rem;
+                word-wrap: break-word;
+            }
+            
+            /* Decorative elements mobile */
+            #home .absolute.w-96 {
+                display: none; /* Ocultar elementos decorativos grandes en móvil */
+            }
+            
+            /* Navbar mobile - asegurar que no se salga */
+            #navbar .flex.items-center {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            
+            /* Logo mobile */
+            #navbar img {
+                max-width: 3rem;
+                height: auto;
+            }
+            
+            /* Text overflow prevention */
+            h1, h2, h3, h4, h5, h6, p, span, a {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+            
+            /* Properties grid mobile */
+            #properties-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            /* Filters mobile - asegurar que no se salgan */
+            #advanced-filters {
+                grid-template-columns: 1fr;
+            }
+            
+            /* View toggle buttons mobile */
+            .map-toggle-btn {
+                padding: 0.5rem;
+                font-size: 0.75rem;
+            }
+            
+            /* Comparator table mobile */
+            #comparator-table {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            #comparator-table table {
+                min-width: 600px; /* Ancho mínimo para la tabla */
+            }
+            
+            #comparator-items {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            /* Share dropdown mobile */
+            .share-dropdown {
+                max-width: calc(100vw - 2rem);
+                right: auto !important;
+                left: 50% !important;
+                transform: translateX(-50%);
+            }
+            
+            /* Contact form mobile */
+            .contact-form-input,
+            .contact-form-textarea {
+                font-size: 16px; /* Previene zoom en iOS */
+            }
+            
+            /* Map container mobile */
+            .properties-map-container {
+                width: 100%;
+                max-width: 100%;
             }
             
             .modal-info-price {
@@ -880,6 +1089,7 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             padding: 0.5rem;
             min-width: 200px;
+            max-width: calc(100vw - 2rem);
             z-index: 10000;
             overflow: visible;
         }
@@ -1500,9 +1710,9 @@
         </div>
         
         <!-- Subtle animated background elements -->
-        <div class="absolute top-20 left-10 w-96 h-96 bg-[#B8860B]/5 rounded-full filter blur-3xl opacity-40 animate-pulse"></div>
-        <div class="absolute top-40 right-10 w-96 h-96 bg-[#D2691E]/5 rounded-full filter blur-3xl opacity-40 animate-pulse animation-delay-2000"></div>
-        <div class="absolute bottom-20 left-1/2 w-96 h-96 bg-[#FFD700]/5 rounded-full filter blur-3xl opacity-40 animate-pulse animation-delay-4000"></div>
+        <div class="absolute top-20 left-10 w-96 h-96 max-w-[80vw] max-h-[80vw] bg-[#B8860B]/5 rounded-full filter blur-3xl opacity-40 animate-pulse"></div>
+        <div class="absolute top-40 right-10 w-96 h-96 max-w-[80vw] max-h-[80vw] bg-[#D2691E]/5 rounded-full filter blur-3xl opacity-40 animate-pulse animation-delay-2000"></div>
+        <div class="absolute bottom-20 left-1/2 w-96 h-96 max-w-[80vw] max-h-[80vw] bg-[#FFD700]/5 rounded-full filter blur-3xl opacity-40 animate-pulse animation-delay-4000"></div>
 
         <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="max-w-4xl mx-auto">
@@ -1525,7 +1735,7 @@
                 <!-- Primary CTA -->
                 <div class="relative group mt-12">
                     <div class="absolute inset-0 bg-gradient-to-r from-[#FFD700] to-[#B8860B] rounded-2xl blur-xl opacity-40 group-hover:opacity-60 transition-opacity duration-300 animate-pulse"></div>
-                    <a href="#contact" class="relative inline-flex items-center bg-gradient-to-r from-[#FFD700] to-[#B8860B] hover:from-[#B8860B] hover:to-[#B8860B]/90 text-white font-bold text-lg sm:text-xl py-6 sm:py-8 px-12 sm:px-16 shadow-2xl hover:shadow-[#B8860B]/25 transition-all duration-300 group-hover:scale-105 rounded-2xl border-0">
+                    <a href="#contact" class="relative inline-flex items-center bg-gradient-to-r from-[#FFD700] to-[#B8860B] hover:from-[#B8860B] hover:to-[#B8860B]/90 text-white font-bold text-base sm:text-lg lg:text-xl py-4 sm:py-6 lg:py-8 px-6 sm:px-12 lg:px-16 shadow-2xl hover:shadow-[#B8860B]/25 transition-all duration-300 group-hover:scale-105 rounded-2xl border-0">
                         <svg class="w-6 h-6 mr-3 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
                         </svg>
@@ -5861,7 +6071,7 @@
     <!-- B.A.I. Chat Widget (Nativo) -->
     <!-- Interfaz de chat nativa que se conecta directamente al backend -->
     <div id="chat-widget" class="fixed bottom-6 right-6 z-50 hidden">
-        <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-96 h-[600px] flex flex-col">
+        <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-96 max-w-[calc(100vw-3rem)] h-[600px] max-h-[calc(100vh-8rem)] flex flex-col">
             <!-- Chat Header -->
             <div class="bg-gradient-to-r from-[#FFD700] to-[#B8860B] text-white p-4 rounded-t-2xl flex items-center justify-between">
                 <div class="flex items-center gap-2">
@@ -6315,7 +6525,7 @@
     
     <!-- Comparator Modal -->
     <div id="comparator-modal" class="modal hidden" role="dialog" aria-label="Comparación de propiedades" aria-modal="true">
-        <div class="modal-content" style="max-width: 95vw; max-height: 95vh;">
+        <div class="modal-content" style="max-width: 95vw; max-height: 95vh; width: 100%;">
             <button class="modal-close-btn" id="comparator-modal-close" aria-label="Cerrar comparación">✕</button>
             <div class="modal-info-container">
                 <h2 class="text-2xl font-heading font-bold mb-6">Comparación de Propiedades</h2>
@@ -6326,7 +6536,7 @@
     
     <!-- Visit Request Modal -->
     <div id="visit-request-modal" class="modal hidden" role="dialog" aria-label="Solicitar visita" aria-modal="true">
-        <div class="modal-content" style="max-width: 600px;">
+        <div class="modal-content" style="max-width: 600px; width: 100%;">
             <button class="modal-close-btn" id="visit-modal-close" aria-label="Cerrar">✕</button>
             <div class="modal-info-container">
                 <h2 class="text-2xl font-heading font-bold mb-6">Solicitar Visita</h2>
@@ -6381,7 +6591,7 @@
     
     <!-- Create Alert Modal -->
     <div id="create-alert-modal" class="modal hidden" role="dialog" aria-label="Crear alerta" aria-modal="true">
-        <div class="modal-content" style="max-width: 500px;">
+        <div class="modal-content" style="max-width: 500px; width: 100%;">
             <button class="modal-close-btn" id="create-alert-close" aria-label="Cerrar">✕</button>
             <div class="modal-info-container">
                 <h2 class="text-2xl font-heading font-bold mb-6">Crear Alerta de Propiedades</h2>
