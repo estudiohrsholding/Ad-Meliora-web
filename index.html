@@ -1186,6 +1186,213 @@
             border-radius: 0.75rem;
             border-left: 4px solid #B8860B;
         }
+        
+        /* ============================================
+           VISIT REQUEST CALENDAR STYLES
+           ============================================ */
+        
+        .visit-calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .calendar-header {
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: #666;
+            padding: 0.5rem;
+        }
+        
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #E5E5E5;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.875rem;
+            background: white;
+        }
+        
+        .calendar-day:hover:not(.disabled):not(.selected) {
+            background: #FAFAD2;
+            border-color: #B8860B;
+        }
+        
+        .calendar-day.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            background: #F5F5F5;
+        }
+        
+        .calendar-day.today {
+            border-color: #B8860B;
+            font-weight: 700;
+        }
+        
+        .calendar-day.selected {
+            background: #B8860B;
+            color: white;
+            border-color: #B8860B;
+            font-weight: 700;
+        }
+        
+        .calendar-day.other-month {
+            opacity: 0.4;
+        }
+        
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .time-slot {
+            padding: 0.75rem;
+            border: 1px solid #E5E5E5;
+            border-radius: 0.375rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: white;
+        }
+        
+        .time-slot:hover:not(.disabled):not(.selected) {
+            background: #FAFAD2;
+            border-color: #B8860B;
+        }
+        
+        .time-slot.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        
+        .time-slot.selected {
+            background: #B8860B;
+            color: white;
+            border-color: #B8860B;
+        }
+        
+        /* ============================================
+           PROPERTY ALERTS STYLES
+           ============================================ */
+        
+        .alert-notification {
+            position: fixed;
+            top: 80px;
+            right: 1rem;
+            background: white;
+            border: 2px solid #B8860B;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            z-index: 10000;
+            max-width: 350px;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+        }
+        
+        .alert-notification.show {
+            transform: translateX(0);
+        }
+        
+        .alert-badge {
+            position: absolute;
+            top: -0.5rem;
+            right: -0.5rem;
+            background: #EF4444;
+            color: white;
+            border-radius: 50%;
+            width: 1.5rem;
+            height: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        
+        .alerts-panel {
+            position: fixed;
+            top: 80px;
+            right: 1rem;
+            background: white;
+            border: 2px solid #B8860B;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            z-index: 9999;
+            max-width: 400px;
+            max-height: 80vh;
+            overflow-y: auto;
+            transform: translateX(450px);
+            transition: transform 0.3s ease;
+        }
+        
+        .alerts-panel.show {
+            transform: translateX(0);
+        }
+        
+        .alert-item {
+            padding: 1rem;
+            border-bottom: 1px solid #E5E5E5;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        
+        .alert-item:hover {
+            background-color: #FAFAD2;
+        }
+        
+        .alert-item:last-child {
+            border-bottom: none;
+        }
+        
+        /* ============================================
+           ROI CALCULATOR STYLES
+           ============================================ */
+        
+        .roi-calculator {
+            background: #FAFAFA;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid #E5E5E5;
+        }
+        
+        .roi-result-card {
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin-top: 1rem;
+        }
+        
+        .roi-metric {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .roi-metric:last-child {
+            border-bottom: none;
+        }
+        
+        .roi-metric-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .roi-metric-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
     </style>
 </head>
 <body class="bg-white text-gray-950 font-body antialiased">
@@ -1217,6 +1424,13 @@
                         <button id="lang-en" class="lang-btn px-2 py-1 text-sm rounded hover:bg-gray-100 transition-colors" data-lang="en" aria-label="English">EN</button>
                         <button id="lang-sv" class="lang-btn px-2 py-1 text-sm rounded hover:bg-gray-100 transition-colors" data-lang="sv" aria-label="Svenska">SV</button>
                     </div>
+                    <!-- Alerts Button -->
+                    <button id="alerts-button" class="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100 transition-colors relative" aria-label="Ver alertas" title="Alertas de propiedades">
+                        <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                        </svg>
+                        <span id="alerts-badge" class="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                    </button>
                     <!-- Dark Mode Toggle -->
                     <button id="dark-mode-toggle" class="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100 transition-colors" aria-label="Alternar modo oscuro" title="Modo oscuro">
                         <svg id="dark-mode-icon" class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -2272,6 +2486,12 @@
             
             // Inicializar calculadora de hipoteca (solo para ventas)
             initMortgageCalculator(property);
+            
+            // Inicializar calculadora de ROI (solo para alquileres)
+            initROICalculator(property);
+            
+            // Guardar propiedad actual para solicitud de visita
+            currentVisitProperty = property;
             
             // Añadir event listeners para lightbox en imágenes del carrusel
             setTimeout(() => {
@@ -4079,6 +4299,9 @@
             // Inicializar internacionalización
             initLanguage();
             
+            // Inicializar sistema de alertas
+            initAlertsSystem();
+            
             // Cerrar historial de búsqueda al hacer clic fuera
             document.addEventListener('click', (e) => {
                 const searchHistory = document.getElementById('search-history');
@@ -4088,6 +4311,482 @@
                 }
             });
         });
+        
+        // ============================================
+        // VISIT REQUEST SYSTEM
+        // ============================================
+        
+        let currentVisitProperty = null;
+        let selectedVisitDate = null;
+        let selectedVisitTime = null;
+        
+        function openVisitRequestModal(property = null) {
+            currentVisitProperty = property || currentVisitProperty;
+            const modal = document.getElementById('visit-request-modal');
+            if (!modal) return;
+            
+            modal.classList.remove('hidden');
+            document.body.classList.add('modal-open');
+            
+            // Inicializar calendario
+            initVisitCalendar();
+            initTimeSlots();
+            
+            // Event listeners
+            document.getElementById('visit-modal-close')?.addEventListener('click', closeVisitModal);
+            document.getElementById('visit-request-form')?.addEventListener('submit', submitVisitRequest);
+        }
+        
+        function closeVisitModal() {
+            const modal = document.getElementById('visit-request-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                document.body.classList.remove('modal-open');
+            }
+        }
+        
+        function initVisitCalendar() {
+            const container = document.getElementById('visit-calendar-container');
+            if (!container) return;
+            
+            const today = new Date();
+            const currentMonth = today.getMonth();
+            const currentYear = today.getFullYear();
+            
+            const firstDay = new Date(currentYear, currentMonth, 1);
+            const lastDay = new Date(currentYear, currentMonth + 1, 0);
+            const daysInMonth = lastDay.getDate();
+            const startingDayOfWeek = firstDay.getDay();
+            
+            const monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+            const dayNames = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+            
+            let html = `
+                <div class="mb-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="text-lg font-bold">${monthNames[currentMonth]} ${currentYear}</h3>
+                    </div>
+                    <div class="visit-calendar">
+                        ${dayNames.map(day => `<div class="calendar-header">${day}</div>`).join('')}
+            `;
+            
+            // Días del mes anterior
+            for (let i = 0; i < startingDayOfWeek; i++) {
+                html += `<div class="calendar-day other-month disabled"></div>`;
+            }
+            
+            // Días del mes actual
+            for (let day = 1; day <= daysInMonth; day++) {
+                const date = new Date(currentYear, currentMonth, day);
+                const isPast = date < today;
+                const isToday = date.toDateString() === today.toDateString();
+                const dateStr = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                
+                html += `
+                    <div class="calendar-day ${isPast ? 'disabled' : ''} ${isToday ? 'today' : ''}" 
+                         data-date="${dateStr}"
+                         ${!isPast ? `onclick="selectVisitDate('${dateStr}')"` : ''}>
+                        ${day}
+                    </div>
+                `;
+            }
+            
+            html += `</div></div>`;
+            container.innerHTML = html;
+        }
+        
+        function selectVisitDate(dateStr) {
+            selectedVisitDate = dateStr;
+            document.getElementById('selected-date').value = dateStr;
+            
+            // Actualizar UI
+            document.querySelectorAll('.calendar-day').forEach(day => {
+                day.classList.remove('selected');
+                if (day.getAttribute('data-date') === dateStr) {
+                    day.classList.add('selected');
+                }
+            });
+            
+            // Mostrar slots de tiempo
+            initTimeSlots();
+        }
+        
+        function initTimeSlots() {
+            const container = document.getElementById('time-slots-container');
+            if (!container) return;
+            
+            const slots = ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'];
+            
+            container.innerHTML = slots.map(time => `
+                <div class="time-slot" data-time="${time}" onclick="selectVisitTime('${time}')">
+                    ${time}
+                </div>
+            `).join('');
+        }
+        
+        function selectVisitTime(time) {
+            selectedVisitTime = time;
+            document.getElementById('selected-time').value = time;
+            
+            // Actualizar UI
+            document.querySelectorAll('.time-slot').forEach(slot => {
+                slot.classList.remove('selected');
+                if (slot.getAttribute('data-time') === time) {
+                    slot.classList.add('selected');
+                }
+            });
+        }
+        
+        async function submitVisitRequest(e) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+            
+            if (!selectedVisitDate || !selectedVisitTime) {
+                alert('Por favor, selecciona una fecha y hora para la visita');
+                return;
+            }
+            
+            const data = {
+                property_id: currentVisitProperty?.id || currentVisitProperty?.titulo,
+                property_title: currentVisitProperty?.titulo,
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                date: selectedVisitDate,
+                time: selectedVisitTime,
+                message: formData.get('message')
+            };
+            
+            // Aquí deberías enviar al backend
+            alert(`¡Visita solicitada!\n\nFecha: ${selectedVisitDate}\nHora: ${selectedVisitTime}\n\nTe contactaremos pronto para confirmar.`);
+            form.reset();
+            closeVisitModal();
+        }
+        
+        // ============================================
+        // PROPERTY ALERTS SYSTEM
+        // ============================================
+        
+        let savedAlerts = JSON.parse(localStorage.getItem('propertyAlerts') || '[]');
+        let lastCheckedProperties = [];
+        
+        function initAlertsSystem() {
+            // Cargar propiedades guardadas la última vez
+            lastCheckedProperties = JSON.parse(localStorage.getItem('lastCheckedProperties') || '[]');
+            
+            // Botón de alertas
+            const alertsBtn = document.getElementById('alerts-button');
+            if (alertsBtn) {
+                alertsBtn.addEventListener('click', toggleAlertsPanel);
+            }
+            
+            // Cerrar panel
+            document.getElementById('close-alerts-panel')?.addEventListener('click', () => {
+                document.getElementById('alerts-panel')?.classList.remove('show');
+            });
+            
+            // Formulario de crear alerta
+            document.getElementById('create-alert-form')?.addEventListener('submit', createAlert);
+            
+            // Cerrar modal de crear alerta
+            document.getElementById('create-alert-close')?.addEventListener('click', () => {
+                document.getElementById('create-alert-modal')?.classList.add('hidden');
+                document.body.classList.remove('modal-open');
+            });
+            
+            // Actualizar badge
+            updateAlertsBadge();
+            renderAlertsList();
+            
+            // Verificar nuevas propiedades periódicamente
+            setInterval(checkForNewProperties, 60000); // Cada minuto
+            checkForNewProperties(); // Verificar al cargar
+        }
+        
+        function toggleAlertsPanel() {
+            const panel = document.getElementById('alerts-panel');
+            if (panel) {
+                panel.classList.toggle('show');
+            }
+        }
+        
+        function openCreateAlertModal() {
+            const modal = document.getElementById('create-alert-modal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                document.body.classList.add('modal-open');
+            }
+        }
+        
+        function createAlert(e) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+            
+            const alert = {
+                id: Date.now().toString(),
+                name: formData.get('alert-name'),
+                type: formData.get('alert-type'),
+                priceMax: formData.get('alert-price-max') || null,
+                rooms: formData.get('alert-rooms') || null,
+                location: formData.get('alert-location') || null,
+                email: formData.get('alert-email'),
+                created: new Date().toISOString(),
+                active: true
+            };
+            
+            savedAlerts.push(alert);
+            localStorage.setItem('propertyAlerts', JSON.stringify(savedAlerts));
+            
+            form.reset();
+            document.getElementById('create-alert-modal')?.classList.add('hidden');
+            document.body.classList.remove('modal-open');
+            
+            renderAlertsList();
+            updateAlertsBadge();
+            
+            alert('Alerta creada exitosamente. Te notificaremos cuando haya propiedades que coincidan.');
+        }
+        
+        function renderAlertsList() {
+            const container = document.getElementById('alerts-list');
+            if (!container) return;
+            
+            if (savedAlerts.length === 0) {
+                container.innerHTML = '<p class="text-gray-600 text-sm text-center py-4">No tienes alertas guardadas</p>';
+                return;
+            }
+            
+            container.innerHTML = savedAlerts.map(alert => `
+                <div class="alert-item" onclick="viewAlertDetails('${alert.id}')">
+                    <div class="font-semibold text-gray-950">${alert.name}</div>
+                    <div class="text-sm text-gray-600 mt-1">
+                        ${alert.type ? getTypeLabel(alert.type) + ' • ' : ''}
+                        ${alert.priceMax ? `Hasta €${parseInt(alert.priceMax).toLocaleString()}` : 'Sin límite de precio'}
+                    </div>
+                    <button onclick="deleteAlert('${alert.id}', event)" class="text-red-600 text-xs mt-2 hover:text-red-800" aria-label="Eliminar alerta">Eliminar</button>
+                </div>
+            `).join('');
+        }
+        
+        function deleteAlert(alertId, event) {
+            if (event) event.stopPropagation();
+            if (confirm('¿Estás seguro de que quieres eliminar esta alerta?')) {
+                savedAlerts = savedAlerts.filter(a => a.id !== alertId);
+                localStorage.setItem('propertyAlerts', JSON.stringify(savedAlerts));
+                renderAlertsList();
+                updateAlertsBadge();
+            }
+        }
+        
+        function checkForNewProperties() {
+            if (savedAlerts.length === 0 || allPropertiesData.length === 0) return;
+            
+            const currentPropertyIds = allPropertiesData.map(p => p.id || p.titulo);
+            const newProperties = allPropertiesData.filter(p => {
+                const propId = p.id || p.titulo;
+                return !lastCheckedProperties.includes(propId);
+            });
+            
+            if (newProperties.length > 0) {
+                // Verificar si alguna nueva propiedad coincide con las alertas
+                savedAlerts.forEach(alert => {
+                    if (!alert.active) return;
+                    
+                    const matchingProperties = newProperties.filter(property => {
+                        // Tipo
+                        if (alert.type) {
+                            const propType = (property.categoria || '').toUpperCase();
+                            if (alert.type === 'SALE' && !propType.includes('SALE') && !propType.includes('FOR SALE')) return false;
+                            if (alert.type === 'RENT' && !propType.includes('RENT') && !propType.includes('RENTAL')) return false;
+                        }
+                        
+                        // Precio
+                        if (alert.priceMax) {
+                            const price = parseFloat(property.precio) || 0;
+                            if (price > parseFloat(alert.priceMax)) return false;
+                        }
+                        
+                        // Habitaciones
+                        if (alert.rooms) {
+                            const rooms = parseInt(property.habitaciones) || 0;
+                            if (rooms < parseInt(alert.rooms)) return false;
+                        }
+                        
+                        // Ubicación
+                        if (alert.location) {
+                            const locationLower = alert.location.toLowerCase();
+                            if (!property.ubicacion || !property.ubicacion.toLowerCase().includes(locationLower)) return false;
+                        }
+                        
+                        return true;
+                    });
+                    
+                    if (matchingProperties.length > 0) {
+                        showAlertNotification(alert, matchingProperties);
+                    }
+                });
+            }
+            
+            // Actualizar lista de propiedades verificadas
+            lastCheckedProperties = currentPropertyIds;
+            localStorage.setItem('lastCheckedProperties', JSON.stringify(lastCheckedProperties));
+        }
+        
+        function showAlertNotification(alert, properties) {
+            const notification = document.createElement('div');
+            notification.className = 'alert-notification show';
+            notification.innerHTML = `
+                <div class="alert-badge">${properties.length}</div>
+                <div class="font-bold text-gray-950 mb-1">Nueva${properties.length > 1 ? 's' : ''} propiedad${properties.length > 1 ? 'es' : ''} encontrada${properties.length > 1 ? 's' : ''}</div>
+                <div class="text-sm text-gray-600 mb-2">Tu alerta "${alert.name}" tiene ${properties.length} coincidencia${properties.length > 1 ? 's' : ''}</div>
+                <button onclick="viewMatchingProperties('${alert.id}')" class="w-full bg-[#B8860B] text-white py-2 px-4 rounded-lg hover:bg-[#8B6508] transition-colors text-sm font-semibold">
+                    Ver Propiedades
+                </button>
+                <button onclick="this.parentElement.remove()" class="w-full mt-2 text-gray-600 text-sm hover:text-gray-800">
+                    Cerrar
+                </button>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Auto-remover después de 10 segundos
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => notification.remove(), 300);
+            }, 10000);
+        }
+        
+        function viewMatchingProperties(alertId) {
+            const alert = savedAlerts.find(a => a.id === alertId);
+            if (!alert) return;
+            
+            // Aplicar filtros de la alerta
+            filterState.type = alert.type || '';
+            filterState.priceMax = alert.priceMax || '';
+            filterState.rooms = alert.rooms || '';
+            filterState.location = alert.location || '';
+            
+            // Actualizar inputs
+            if (document.getElementById('filter-type')) document.getElementById('filter-type').value = filterState.type;
+            if (document.getElementById('filter-price-max')) document.getElementById('filter-price-max').value = filterState.priceMax;
+            if (document.getElementById('filter-rooms')) document.getElementById('filter-rooms').value = filterState.rooms;
+            if (document.getElementById('filter-location')) document.getElementById('filter-location').value = filterState.location;
+            
+            applyFilters();
+            
+            // Cerrar notificación y panel
+            document.querySelectorAll('.alert-notification').forEach(n => n.remove());
+            document.getElementById('alerts-panel')?.classList.remove('show');
+            
+            // Scroll a propiedades
+            document.getElementById('properties')?.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function updateAlertsBadge() {
+            const badge = document.getElementById('alerts-badge');
+            if (badge) {
+                if (savedAlerts.length > 0) {
+                    badge.textContent = savedAlerts.length;
+                    badge.classList.remove('hidden');
+                } else {
+                    badge.classList.add('hidden');
+                }
+            }
+        }
+        
+        // ============================================
+        // ROI CALCULATOR
+        // ============================================
+        
+        function initROICalculator(property) {
+            // Solo para propiedades de alquiler
+            const isRental = property.categoria && (property.categoria.toUpperCase().includes('RENT') || property.categoria.toUpperCase().includes('ALQUILER'));
+            if (!isRental) return;
+            
+            let calculatorSection = document.getElementById('modal-roi-calculator-section');
+            if (!calculatorSection) {
+                const modalInfoContainer = document.querySelector('.modal-info-container');
+                if (modalInfoContainer) {
+                    calculatorSection = document.createElement('div');
+                    calculatorSection.id = 'modal-roi-calculator-section';
+                    calculatorSection.className = 'roi-calculator';
+                    calculatorSection.innerHTML = `
+                        <h3 class="modal-map-title">
+                            <svg class="w-6 h-6 text-[#B8860B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                            </svg>
+                            Calculadora de ROI (Retorno de Inversión)
+                        </h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Precio de Compra (€)</label>
+                                <input type="number" id="roi-purchase-price" value="${parseFloat(property.precio) || 0}" class="calculator-input" onchange="calculateROI()">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Alquiler Mensual Estimado (€)</label>
+                                <input type="number" id="roi-monthly-rent" value="${Math.round((parseFloat(property.precio) || 0) * 0.005)}" class="calculator-input" onchange="calculateROI()">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Gastos Anuales (€)</label>
+                                <input type="number" id="roi-annual-expenses" value="${Math.round((parseFloat(property.precio) || 0) * 0.02)}" class="calculator-input" placeholder="IBI, comunidad, mantenimiento..." onchange="calculateROI()">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Ocupación Anual (%)</label>
+                                <input type="number" id="roi-occupancy" value="85" min="0" max="100" class="calculator-input" onchange="calculateROI()">
+                            </div>
+                            <div id="roi-result" class="roi-result-card hidden">
+                                <div class="roi-metric">
+                                    <span class="roi-metric-label">Ingresos Anuales</span>
+                                    <span class="roi-metric-value" id="roi-annual-income">€0</span>
+                                </div>
+                                <div class="roi-metric">
+                                    <span class="roi-metric-label">Beneficio Anual</span>
+                                    <span class="roi-metric-value" id="roi-annual-profit">€0</span>
+                                </div>
+                                <div class="roi-metric">
+                                    <span class="roi-metric-label">ROI Anual</span>
+                                    <span class="roi-metric-value" id="roi-percentage">0%</span>
+                                </div>
+                                <div class="roi-metric">
+                                    <span class="roi-metric-label">Años para Recuperar Inversión</span>
+                                    <span class="roi-metric-value" id="roi-payback-years">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    modalInfoContainer.appendChild(calculatorSection);
+                    calculateROI();
+                }
+            }
+        }
+        
+        function calculateROI() {
+            const purchasePrice = parseFloat(document.getElementById('roi-purchase-price')?.value || 0);
+            const monthlyRent = parseFloat(document.getElementById('roi-monthly-rent')?.value || 0);
+            const annualExpenses = parseFloat(document.getElementById('roi-annual-expenses')?.value || 0);
+            const occupancy = parseFloat(document.getElementById('roi-occupancy')?.value || 85) / 100;
+            
+            if (purchasePrice === 0 || monthlyRent === 0) {
+                document.getElementById('roi-result')?.classList.add('hidden');
+                return;
+            }
+            
+            const annualRent = monthlyRent * 12 * occupancy;
+            const annualProfit = annualRent - annualExpenses;
+            const roiPercentage = (annualProfit / purchasePrice) * 100;
+            const paybackYears = purchasePrice / annualProfit;
+            
+            const resultDiv = document.getElementById('roi-result');
+            if (resultDiv) {
+                document.getElementById('roi-annual-income').textContent = `€${annualRent.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
+                document.getElementById('roi-annual-profit').textContent = `€${annualProfit.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
+                document.getElementById('roi-percentage').textContent = `${roiPercentage.toFixed(2)}%`;
+                document.getElementById('roi-payback-years').textContent = `${paybackYears.toFixed(1)} años`;
+                resultDiv.classList.remove('hidden');
+            }
+        }
         
         // ============================================
         // PRODUCTS FUNCTIONS
@@ -4665,6 +5364,12 @@
                             </svg>
                             <span>+46 70 570 98 25 - Marco</span>
                         </a>
+                        <button onclick="openVisitRequestModal()" class="modal-info-contact-item w-full justify-center bg-white/20 hover:bg-white/30 mt-2 font-semibold">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            <span>Solicitar Visita</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -4719,6 +5424,110 @@
             <div class="modal-info-container">
                 <h2 class="text-2xl font-heading font-bold mb-6">Comparación de Propiedades</h2>
                 <div id="comparator-table" class="overflow-x-auto"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Visit Request Modal -->
+    <div id="visit-request-modal" class="modal hidden" role="dialog" aria-label="Solicitar visita" aria-modal="true">
+        <div class="modal-content" style="max-width: 600px;">
+            <button class="modal-close-btn" id="visit-modal-close" aria-label="Cerrar">✕</button>
+            <div class="modal-info-container">
+                <h2 class="text-2xl font-heading font-bold mb-6">Solicitar Visita</h2>
+                <form id="visit-request-form" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Nombre *</label>
+                        <input type="text" name="name" required class="contact-form-input" aria-required="true">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+                        <input type="email" name="email" required class="contact-form-input" aria-required="true">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Teléfono *</label>
+                        <input type="tel" name="phone" required class="contact-form-input" aria-required="true">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Fecha de Visita *</label>
+                        <div id="visit-calendar-container" class="mt-2"></div>
+                        <input type="hidden" id="selected-date" name="date" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Hora Preferida *</label>
+                        <div id="time-slots-container" class="time-slots"></div>
+                        <input type="hidden" id="selected-time" name="time" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Mensaje (opcional)</label>
+                        <textarea name="message" rows="3" class="contact-form-input"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-[#FFD700] to-[#B8860B] text-white font-semibold py-3 px-6 rounded-lg hover:from-[#B8860B] hover:to-[#8B6508] transition-all">
+                        Confirmar Visita
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Property Alerts Panel -->
+    <div id="alerts-panel" class="alerts-panel" role="region" aria-label="Alertas de propiedades">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-bold text-gray-950">Alertas Guardadas</h3>
+            <button id="close-alerts-panel" class="text-gray-500 hover:text-gray-700" aria-label="Cerrar panel de alertas">✕</button>
+        </div>
+        <div id="alerts-list" class="space-y-2">
+            <p class="text-gray-600 text-sm text-center py-4">No tienes alertas guardadas</p>
+        </div>
+        <button onclick="openCreateAlertModal()" class="w-full mt-4 bg-gradient-to-r from-[#FFD700] to-[#B8860B] text-white font-semibold py-2 px-4 rounded-lg hover:from-[#B8860B] hover:to-[#8B6508] transition-all">
+            Crear Nueva Alerta
+        </button>
+    </div>
+    
+    <!-- Create Alert Modal -->
+    <div id="create-alert-modal" class="modal hidden" role="dialog" aria-label="Crear alerta" aria-modal="true">
+        <div class="modal-content" style="max-width: 500px;">
+            <button class="modal-close-btn" id="create-alert-close" aria-label="Cerrar">✕</button>
+            <div class="modal-info-container">
+                <h2 class="text-2xl font-heading font-bold mb-6">Crear Alerta de Propiedades</h2>
+                <form id="create-alert-form" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Nombre de la Alerta *</label>
+                        <input type="text" name="alert-name" required class="contact-form-input" placeholder="Ej: Pisos 3 hab. en Alicante" aria-required="true">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Tipo</label>
+                        <select name="alert-type" class="contact-form-input">
+                            <option value="">Todos</option>
+                            <option value="SALE">Venta</option>
+                            <option value="RENT">Alquiler</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Precio Máximo (€)</label>
+                        <input type="number" name="alert-price-max" class="contact-form-input" min="0">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Habitaciones Mínimas</label>
+                        <select name="alert-rooms" class="contact-form-input">
+                            <option value="">Cualquiera</option>
+                            <option value="1">1+</option>
+                            <option value="2">2+</option>
+                            <option value="3">3+</option>
+                            <option value="4">4+</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Ubicación</label>
+                        <input type="text" name="alert-location" class="contact-form-input" placeholder="Ciudad o zona">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Email para Notificaciones *</label>
+                        <input type="email" name="alert-email" required class="contact-form-input" aria-required="true">
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-[#FFD700] to-[#B8860B] text-white font-semibold py-3 px-6 rounded-lg hover:from-[#B8860B] hover:to-[#8B6508] transition-all">
+                        Crear Alerta
+                    </button>
+                </form>
             </div>
         </div>
     </div>
